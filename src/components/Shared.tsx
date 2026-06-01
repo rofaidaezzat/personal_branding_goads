@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Globe, ArrowLeft } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 export const Button = ({
   children,
   variant = 'primary',
@@ -34,38 +35,47 @@ export const Button = ({
 
 };
 export const Navbar = ({ onOpenPopup }: {onOpenPopup: () => void;}) => {
+  const { i18n } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const isRtl = i18n.language === 'ar';
+  const toggleLanguage = () => {
+    i18n.changeLanguage(isRtl ? 'en' : 'ar');
+  };
+
   const navLinks = [
-  {
-    name: 'الخدمة',
-    href: '#service'
-  },
-  {
-    name: 'القصة',
-    href: '#story'
-  },
-  {
-    name: 'مين يستفيد؟',
-    href: '#audience'
-  },
-  {
-    name: 'النتائج',
-    href: '#results'
-  },
-  {
-    name: 'الباكدج',
-    href: '#package'
-  },
-  {
-    name: 'الأسئلة',
-    href: '#faq'
-  }];
+    {
+      name: 'الخدمة',
+      href: '#service'
+    },
+    {
+      name: 'القصة',
+      href: '#story'
+    },
+    {
+      name: 'مين يستفيد؟',
+      href: '#audience'
+    },
+    {
+      name: 'النتائج',
+      href: '#results'
+    },
+    {
+      name: 'الباكدج',
+      href: '#package'
+    },
+    {
+      name: 'الأسئلة',
+      href: '#faq'
+    }
+  ];
 
   return (
     <header
@@ -82,11 +92,11 @@ export const Navbar = ({ onOpenPopup }: {onOpenPopup: () => void;}) => {
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) =>
-          <a
-            key={link.name}
-            href={link.href}
-            className="text-gray-600 hover:text-go-orange font-semibold transition-colors text-sm">
-            
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-gray-600 hover:text-go-orange font-semibold transition-colors text-sm"
+            >
               {link.name}
             </a>
           )}
@@ -94,9 +104,12 @@ export const Navbar = ({ onOpenPopup }: {onOpenPopup: () => void;}) => {
 
         {/* Actions */}
         <div className="hidden lg:flex items-center gap-4">
-          <button className="flex items-center gap-1 text-gray-600 hover:text-go-black font-semibold text-sm transition-colors">
+          <button 
+            onClick={toggleLanguage}
+            className="flex items-center gap-1 text-gray-600 hover:text-go-black font-semibold text-sm transition-colors"
+          >
             <Globe size={16} />
-            <span>EN</span>
+            <span>{isRtl ? 'EN' : 'العربية'}</span>
           </button>
           <Button onClick={onOpenPopup} className="text-sm px-5 py-2.5">
             احجز اجتماع مجاني
@@ -106,79 +119,70 @@ export const Navbar = ({ onOpenPopup }: {onOpenPopup: () => void;}) => {
         {/* Mobile Toggle */}
         <button
           className="lg:hidden text-go-black"
-          onClick={() => setMobileMenuOpen(true)}>
-          
+          onClick={() => setMobileMenuOpen(true)}
+        >
           <Menu size={28} />
         </button>
       </div>
 
       {/* Mobile Menu */}
       <AnimatePresence>
-        {mobileMenuOpen &&
-        <motion.div
-          initial={{
-            opacity: 0,
-            x: '100%'
-          }}
-          animate={{
-            opacity: 1,
-            x: 0
-          }}
-          exit={{
-            opacity: 0,
-            x: '100%'
-          }}
-          transition={{
-            type: 'spring',
-            damping: 25,
-            stiffness: 200
-          }}
-          className="fixed inset-0 bg-white z-50 flex flex-col p-6">
-          
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: isRtl ? '100%' : '-100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: isRtl ? '100%' : '-100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed inset-0 bg-white z-50 flex flex-col p-6"
+          >
             <div className="flex justify-between items-center mb-12">
               <span className="text-2xl font-black tracking-tighter text-go-black">
                 GO<span className="text-go-orange">ADS</span>
               </span>
               <button
-              onClick={() => setMobileMenuOpen(false)}
-              className="p-2 bg-gray-100 rounded-full text-gray-600">
-              
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 bg-gray-100 rounded-full text-gray-600"
+              >
                 <X size={24} />
               </button>
             </div>
 
             <nav className="flex flex-col gap-6 text-xl font-bold">
-              {navLinks.map((link) =>
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-go-black hover:text-go-orange border-b border-gray-100 pb-4">
-              
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-go-black hover:text-go-orange border-b border-gray-100 pb-4"
+                >
                   {link.name}
                 </a>
-            )}
+              ))}
             </nav>
 
             <div className="mt-auto flex flex-col gap-4">
-              <button className="flex items-center justify-center gap-2 text-gray-600 font-bold py-3 bg-gray-50 rounded-xl">
+              <button 
+                onClick={toggleLanguage}
+                className="flex items-center justify-center gap-2 text-gray-600 font-bold py-3 bg-gray-50 rounded-xl"
+              >
                 <Globe size={20} />
-                <span>Switch to English</span>
+                <span>{isRtl ? 'Switch to English' : 'التحويل للعربية'}</span>
               </button>
               <Button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenPopup();
-              }}
-              className="w-full py-4 text-lg">
-              
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenPopup();
+                }}
+                className="w-full py-4 text-lg"
+              >
                 احجز اجتماع مجاني
               </Button>
             </div>
           </motion.div>
-        }
+        )}
       </AnimatePresence>
-    </header>);
+    </header>
+  );
 
 };
 export const PopupForm = ({

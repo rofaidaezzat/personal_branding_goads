@@ -14,10 +14,16 @@ import { Differentiation } from './components/Differentiation';
 import { Process } from './components/Process';
 import { Testimonials } from './components/Testimonials';
 import { FAQ } from './components/FAQ';
+import { Contactus } from './components/Contactus';
 import { FinalCTA } from './components/FinalCTA';
+import { useTranslation } from 'react-i18next';
+
 export function App() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  return <div dir="rtl" className="min-h-screen bg-white text-go-black font-arabic overflow-x-hidden">
+  const { i18n } = useTranslation();
+  const dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+
+  return <div dir={dir} className={`min-h-screen bg-white text-go-black overflow-x-hidden ${i18n.language === 'ar' ? 'font-arabic' : 'font-sans'}`}>
       <Navbar onOpenPopup={() => setIsPopupOpen(true)} />
 
       <main>
@@ -35,7 +41,8 @@ export function App() {
         <Process />
         <Testimonials />
         <FAQ onOpenPopup={() => setIsPopupOpen(true)} />
-        <FinalCTA />
+        <Contactus />
+        {/* <FinalCTA /> */}
       </main>
 
       <footer className="bg-go-black text-white py-8 border-t border-white/10 text-center">
