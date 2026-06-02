@@ -5,7 +5,7 @@ import { Stethoscope, Scale, Lightbulb, Briefcase, Laptop, Play, X, Coins, Home 
 export const Audience = () => {
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
 
-  const driveThumbnail = (id: string) => `https://drive.google.com/thumbnail?id=${id}&sz=w800`;
+  const driveThumbnail = (id: string) => `https://lh3.googleusercontent.com/d/${id}=w800`;
 
   const audiences = [{
     title: 'الدكاترة والعيادات',
@@ -19,36 +19,35 @@ export const Audience = () => {
     desc: 'لو أنت محامي، محتواك وطريقة ظهورك ممكن يخلّوا العميل يحس إنك فاهم مشكلته قبل ما يتواصل معاك.',
     examples: 'محامين شركات، قضايا أسرية، عقارات، تأسيس شركات، استشارات قانونية.',
     image: driveThumbnail('1Hgb_SnzJWU1DIpyjmM9mI8nJmwe1OWPj'),
-    fallbackImage: 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     videoId: '1Hgb_SnzJWU1DIpyjmM9mI8nJmwe1OWPj'
   }, {
     title: 'الكوتشز والمدربين',
     icon: <Lightbulb />,
     desc: 'لو بتبيع معرفة أو استشارات، الناس لازم تشوف طريقة تفكيرك وتقتنع بيك قبل ما تشتري منك.',
     examples: 'Business coaches، career coaches، life coaches، fitness coaches.',
-    image: 'https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+    image: driveThumbnail('1XBj-YHRyexSb-h1pdCUY0LxToGmGodlj'),
+    videoId: '1XBj-YHRyexSb-h1pdCUY0LxToGmGodlj'
   }, {
     title: 'المستشارين الماليين',
     icon: <Coins />,
     desc: 'لو أنت مستشار مالي أو شغال في مجال التمويل والاستثمار، البراند الشخصي بيساعدك تبني مصداقية وثقة عالية مع العملاء.',
     examples: 'مستشارين ماليين، خبراء تمويل، مخططين ماليين، مستشاري استثمار، محاسبين قانونيين.',
-    image: driveThumbnail('1XBj-YHRyexSb-h1pdCUY0LxToGmGodlj'),
-    fallbackImage: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    videoId: '1XBj-YHRyexSb-h1pdCUY0LxToGmGodlj'
+    image: driveThumbnail('1V7m0_4oioehZ4YK6pJL7e01Z5eQQQRqh'),
+    videoId: '1V7m0_4oioehZ4YK6pJL7e01Z5eQQQRqh'
   }, {
     title: 'المستشارين العقاريين',
     icon: <Home />,
     desc: 'لو أنت شغال في العقارات أو التسويق العقاري، البراند الشخصي بيساعدك تبني اسم قوي وتجذب مستثمرين وملاك يثقوا فيك.',
     examples: 'مسوقين عقاريين، مستشاري عقارات، مطورين عقاريين، أصحاب شركات تسويق عقاري.',
     image: driveThumbnail('1GSjej0Z9kcV0kQSNE6ts4WgKiSxcfMU4'),
-    fallbackImage: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     videoId: '1GSjej0Z9kcV0kQSNE6ts4WgKiSxcfMU4'
   }, {
     title: 'أي شخص عايز يبقى معروف',
     icon: <div />,
     desc: 'لو هدفك إن الناس تفتكرك لما يحتاجوا خدمتك، يبقى أنت محتاج براند شخصي واضح ومبني صح.',
     examples: 'أي مجال بيعتمد على الثقة والخبرة الشخصية.',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+    image: driveThumbnail('1Iq4YojbQe5VDHruevj4cxbhkv94pXXIz'),
+    videoId: '1Iq4YojbQe5VDHruevj4cxbhkv94pXXIz'
   }];
 
   return <section id="audience" className="py-24 bg-white">
@@ -103,8 +102,10 @@ export const Audience = () => {
               >
                 <div className="relative h-48 overflow-hidden">
                   <img
+                    key={item.image}
                     src={item.image}
                     alt={item.title}
+                    referrerPolicy="no-referrer"
                     onError={(e) => {
                       if (item.fallbackImage) {
                         e.currentTarget.src = item.fallbackImage;

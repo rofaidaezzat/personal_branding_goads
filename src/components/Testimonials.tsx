@@ -104,6 +104,7 @@ export const Testimonials = () => {
               key={activeIndex}
               src={driveThumbnail(videos[activeIndex].id, 800)}
               alt={`Testimonial ${activeIndex + 1}`}
+              referrerPolicy="no-referrer"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80"
             />
 
@@ -157,6 +158,7 @@ export const Testimonials = () => {
               <img
                 src={driveThumbnail(v.id, 300)}
                 alt={`Testimonial ${i + 1}`}
+                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 flex items-center justify-center">

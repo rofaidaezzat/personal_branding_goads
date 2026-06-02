@@ -32,11 +32,26 @@ export const SuccessStories = () => {
       text: 'زيادة 150% في الحجوزات'
     }]
   }, {
-    name: 'أ. محمود طارق',
+    name: 'د. دياب',
+    profession: 'دكتور أسنان',
+    videoId: '1hj-qUsVzB91RMJPwuaMj7xmVs62uE-ii',
+    image: 'https://lh3.googleusercontent.com/d/1hj-qUsVzB91RMJPwuaMj7xmVs62uE-ii=w600',
+    before: 'صعوبة في إيصال المعلومات الطبية للمرضى بشكل مبسط.',
+    after: 'فيديوهات طبية تفاعلية، بناء ثقة كبيرة، وتضاعف أعداد الحجوزات.',
+    metrics: [{
+      icon: <Users size={16} />,
+      text: '+15K Followers'
+    }, {
+      icon: <TrendingUp size={16} />,
+      text: 'زيادة 120% في الحجوزات'
+    }]
+  }, {
+    name: 'المحامي حامد',
     profession: 'محامي شركات',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+    videoId: '1_e2klfyMjUV963vQv5JZWOZe30V_MUA9',
+    image: 'https://lh3.googleusercontent.com/d/1_e2klfyMjUV963vQv5JZWOZe30V_MUA9=w600',
     before: 'محتوى قانوني معقد ومش بيوصل للعميل المستهدف.',
-    after: 'تبسيط الرسالة، بناء ثقة، واستفسارات من شركات ناشئة.',
+    after: 'تبسيط الرسالة، بناء ثقة، واستفسارات مستمرة من شركات ناشئة.',
     metrics: [{
       icon: <TrendingUp size={16} />,
       text: '3x Revenue Growth'
@@ -45,30 +60,18 @@ export const SuccessStories = () => {
       text: 'ريلز حققت انتشار قوي'
     }]
   }, {
-    name: 'سارة كمال',
-    profession: 'Business Coach',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-    before: 'خبرة قوية بس مش قادرة تبيع استشارات بسعر عالي.',
-    after: 'براند قوي، محتوى بيعكس قيمتها، وحجوزات مستمرة.',
+    name: 'د. زياد',
+    profession: 'أخصائي تغذية وعلاج طبيعي',
+    videoId: '1znPaRCTlm9_LAQ4neg0LCBOC6JakksGc',
+    image: 'https://lh3.googleusercontent.com/d/1znPaRCTlm9_LAQ4neg0LCBOC6JakksGc=w600',
+    before: 'محتوى غير منظم وصعوبة في جذب عملاء للاستشارات الشخصية.',
+    after: 'حضور قوي واحترافي، زيادة الوعي بالخدمة، وجدول حجوزات كامل.',
     metrics: [{
       icon: <Users size={16} />,
-      text: 'نمو ملحوظ في المتابعين'
+      text: '+30K Followers'
     }, {
       icon: <TrendingUp size={16} />,
-      text: '+40% Bookings'
-    }]
-  }, {
-    name: 'م. كريم سعيد',
-    profession: 'صاحب شركة ديكور',
-    image: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-    before: 'بيعتمد على صور الشغل بس من غير ما يظهر كخبير.',
-    after: 'بقى الواجهة لشركته، والناس بتثق في رأيه قبل التصميم.',
-    metrics: [{
-      icon: <Eye size={16} />,
-      text: 'تحسن كبير في شكل البراند'
-    }, {
-      icon: <TrendingUp size={16} />,
-      text: 'زيادة في الطلب على الخدمة'
+      text: 'جدول حجوزات كامل'
     }]
   }, {
     name: 'د. نورهان علي',
@@ -82,19 +85,6 @@ export const SuccessStories = () => {
     }, {
       icon: <Users size={16} />,
       text: '+50K Followers'
-    }]
-  }, {
-    name: 'عمر فاروق',
-    profession: 'Marketing Consultant',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-    before: 'بيسوق للناس ومش عارف يسوق لنفسه.',
-    after: 'بناء Personal Brand قوي جابله عملاء B2B كبار.',
-    metrics: [{
-      icon: <TrendingUp size={16} />,
-      text: 'نمو في الإيرادات'
-    }, {
-      icon: <Users size={16} />,
-      text: '15 Leads/month'
     }]
   }];
   return <section id="results" className="py-24 bg-go-warm">
@@ -145,7 +135,7 @@ export const SuccessStories = () => {
                 className="relative h-56 overflow-hidden cursor-pointer"
                 onClick={() => story.videoId && setActiveVideoId(story.videoId)}
               >
-                <img src={story.image} alt={story.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={story.image} alt={story.name} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-go-black/30 group-hover:bg-go-black/40 transition-colors" />
 
                 {/* Play Button */}
