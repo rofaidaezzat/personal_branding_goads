@@ -23,11 +23,18 @@ export function App() {
   const { i18n } = useTranslation();
   const dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
 
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return <div dir={dir} className={`min-h-screen bg-white text-go-black overflow-x-hidden ${i18n.language === 'ar' ? 'font-arabic' : 'font-sans'}`}>
-      <Navbar onOpenPopup={() => setIsPopupOpen(true)} />
+      <Navbar onOpenPopup={scrollToContact} />
 
       <main>
-        <Hero onOpenPopup={() => setIsPopupOpen(true)} />
+        <Hero onOpenPopup={scrollToContact} />
         <SocialProof />
         <Problem />
         <WhatIsBranding />
@@ -36,11 +43,11 @@ export function App() {
         <Audience />
         <Solution />
         <SuccessStories />
-        <Package onOpenPopup={() => setIsPopupOpen(true)} />
+        <Package onOpenPopup={scrollToContact} />
         <Differentiation />
         <Process />
         <Testimonials />
-        <FAQ onOpenPopup={() => setIsPopupOpen(true)} />
+        <FAQ onOpenPopup={scrollToContact} />
         <Contactus />
         {/* <FinalCTA /> */}
       </main>

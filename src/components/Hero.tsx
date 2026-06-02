@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from './Shared';
-import { TrendingUp, Users } from 'lucide-react';
+import { TrendingUp, Users, Play } from 'lucide-react';
 export const Hero = ({ onOpenPopup }: {onOpenPopup: () => void;}) => {
+  const [isPlaying, setIsPlaying] = useState(false);
   const { scrollY } = useScroll();
   const yUp = useTransform(scrollY, [0, 500], [0, -30]);
   const yDown = useTransform(scrollY, [0, 500], [0, 40]);
@@ -82,14 +83,42 @@ export const Hero = ({ onOpenPopup }: {onOpenPopup: () => void;}) => {
                 delay: 0.3,
                 ease: 'easeOut'
               }}
-              className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl z-10">
+              className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl z-10 bg-go-black">
               
-              <img
-                src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-                alt="Professional Business Owner"
-                className="w-full h-full object-cover" />
+              {isPlaying ? (
+                <iframe
+                  src="https://drive.google.com/file/d/1Q8ReLRSMEyytGX7hIBSaoLRQ_5Dc440z/preview?autoplay=1"
+                  className="w-full h-full border-0"
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                  title="Hero Video"
+                />
+              ) : (
+                <div 
+                  className="relative w-full h-full cursor-pointer group"
+                  onClick={() => setIsPlaying(true)}
+                >
+                  <img
+                    src="https://lh3.googleusercontent.com/d/1Q8ReLRSMEyytGX7hIBSaoLRQ_5Dc440z=w1000"
+                    alt="Professional Business Owner"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"
+                  />
+                  
+                  {/* Play Button Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-go-black/20 group-hover:bg-go-black/40 transition-colors duration-300">
+                    <div className="w-20 h-20 bg-go-orange text-white rounded-full flex items-center justify-center shadow-glow group-hover:scale-110 transition-transform duration-300">
+                      <Play size={34} fill="currentColor" className="ml-1" />
+                    </div>
+                  </div>
+
+                  {/* Visual Indicator */}
+                  <div className="absolute bottom-5 right-5 bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full">
+                    شاهد كيف نغير المعادلة 🎬
+                  </div>
+                </div>
+              )}
               
-              <div className="absolute inset-0 bg-gradient-to-t from-go-black/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-go-black/40 to-transparent pointer-events-none" />
             </motion.div>
 
             {/* Floating Card 1: Revenue */}

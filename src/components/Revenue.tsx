@@ -66,6 +66,98 @@ export const Revenue = () => {
             إحنا بنحوّل وجودك على السوشيال ميديا من بوستات عشوائية لنظام بيبني
             ثقة وبيفتح فرص بيع.
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="mt-10 max-w-3xl mx-auto"
+          >
+            {/* Chart Card */}
+            <div className="bg-white border border-gray-100 rounded-3xl shadow-xl overflow-hidden">
+              {/* Card Header */}
+              <div className="bg-gray-50 border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-go-orange animate-ping" />
+                  <span className="font-bold text-gray-700 text-sm">فرصة السوق والنمو 📈</span>
+                </div>
+                <span className="text-xs text-gray-400 font-bold">Source: eMarketer 2025</span>
+              </div>
+
+              <div className="p-6 space-y-6">
+                {/* Stat 1: Creator Economy Growth */}
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-bold text-gray-600">اقتصاد صناع المحتوى</span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-bold text-gray-400 line-through">$250B</span>
+                      <span className="text-sm font-black text-go-orange">$480B</span>
+                      <span className="text-xs bg-green-50 text-green-600 font-bold px-2 py-0.5 rounded-full">+92% بحلول 2027</span>
+                    </div>
+                  </div>
+                  <div className="h-5 bg-gray-100 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: '52%' }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.5, duration: 1.2, ease: 'easeOut' }}
+                      className="h-full bg-gray-300 rounded-full relative"
+                    >
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: '100%' }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.9, duration: 1.0, ease: 'easeOut' }}
+                        className="h-full bg-gradient-to-r from-go-orange/70 to-go-orange rounded-full absolute inset-0"
+                      />
+                    </motion.div>
+                  </div>
+                  <div className="flex justify-between mt-1">
+                    <span className="text-xs text-gray-400">الآن</span>
+                    <span className="text-xs text-go-orange font-bold">2027</span>
+                  </div>
+                </div>
+
+                {/* Stat 2: US Creator Spend */}
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-bold text-gray-600">إنفاق الشركات على محتوى الكرياتورز (أمريكا 2025)</span>
+                    <span className="text-sm font-black text-go-black">$37B</span>
+                  </div>
+                  <div className="h-5 bg-gray-100 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: '77%' }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.7, duration: 1.2, ease: 'easeOut' }}
+                      className="h-full bg-gradient-to-r from-blue-400 to-blue-500 rounded-full"
+                    />
+                  </div>
+                </div>
+
+                {/* Stat 3: Micro/Nano Influencer Share */}
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-bold text-gray-600">حصة Micro &amp; Nano Influencers من ميزانيات التسويق</span>
+                    <span className="text-sm font-black text-go-orange">45.5%</span>
+                  </div>
+                  <div className="h-5 bg-gray-100 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: '45.5%' }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.9, duration: 1.2, ease: 'easeOut' }}
+                      className="h-full bg-gradient-to-r from-go-orange to-amber-400 rounded-full"
+                    />
+                  </div>
+                  <p className="mt-2 text-xs text-gray-500 font-medium text-right">
+                    أصحاب الجمهور الصغير بس الواثق فيهم — ده أنت!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
 
         {/* Visual Chain */}
@@ -122,6 +214,7 @@ export const Revenue = () => {
       }} viewport={{
         once: true
       }} className="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden">
+          {/* Top bar */}
           <div className="bg-gray-50 border-b border-gray-100 px-6 py-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <BarChart3 className="text-gray-400" size={20} />
@@ -135,46 +228,91 @@ export const Revenue = () => {
           </div>
 
           <div className="p-8 grid md:grid-cols-3 gap-8">
-            <div className="space-y-6">
+            {/* Right stats panel */}
+            <div className="space-y-6 order-last md:order-first">
               <div>
-                <p className="text-sm font-bold text-gray-400 mb-1">
-                  Inquiries (Last 30 days)
-                </p>
-                <div className="flex items-end gap-3">
-                  <span className="text-4xl font-black text-go-black">142</span>
-                  <span className="text-sm font-bold text-green-500 bg-green-50 px-2 py-1 rounded-md mb-1">
-                    +48%
-                  </span>
+                <p className="text-xs font-bold text-gray-400 mb-1 uppercase tracking-wide">اقتصاد الكرياتورز</p>
+                <div className="flex items-end gap-2">
+                  <span className="text-3xl font-black text-go-black">$480B</span>
+                  <span className="text-sm font-bold text-green-500 bg-green-50 px-2 py-1 rounded-md mb-1">+92%</span>
                 </div>
+                <p className="text-xs text-gray-400 font-medium">بحلول 2027</p>
               </div>
               <div>
-                <p className="text-sm font-bold text-gray-400 mb-1">
-                  Profile Visits
-                </p>
-                <div className="flex items-end gap-3">
-                  <span className="text-3xl font-black text-go-black">
-                    12.4K
-                  </span>
-                  <span className="text-sm font-bold text-green-500 bg-green-50 px-2 py-1 rounded-md mb-1">
-                    +120%
-                  </span>
+                <p className="text-xs font-bold text-gray-400 mb-1 uppercase tracking-wide">Micro &amp; Nano Influencers</p>
+                <div className="flex items-end gap-2">
+                  <span className="text-3xl font-black text-go-orange">45.5%</span>
                 </div>
+                <p className="text-xs text-gray-400 font-medium">من ميزانيات التسويق</p>
               </div>
             </div>
 
-            <div className="md:col-span-2 relative h-48 bg-gray-50 rounded-xl border border-gray-100 flex items-end p-4 gap-2">
-              {/* Fake Bar Chart */}
-              {[40, 30, 50, 40, 60, 80, 100].map((height, i) => <motion.div key={i} initial={{
-              height: 0
-            }} whileInView={{
-              height: `${height}%`
-            }} viewport={{
-              once: true
-            }} transition={{
-              delay: 0.5 + i * 0.1,
-              duration: 0.8,
-              type: 'spring'
-            }} className={`flex-1 rounded-t-md ${i === 6 ? 'bg-go-orange' : 'bg-gray-200'}`} />)}
+            {/* Bar Chart */}
+            <div className="md:col-span-2 relative bg-gray-50 rounded-xl border border-gray-100 overflow-hidden">
+              {/* Y-axis labels */}
+              <div className="absolute left-0 top-0 bottom-8 w-10 flex flex-col justify-between items-end pr-2 py-3 text-[10px] font-bold text-gray-300">
+                <span>500B</span>
+                <span>375B</span>
+                <span>250B</span>
+                <span>125B</span>
+                <span>0</span>
+              </div>
+              {/* Bars area */}
+              <div className="ml-10 h-52 flex items-end gap-3 px-4 pb-8 pt-4">
+                {/* Bar 1: $250B (current) */}
+                <div className="flex-1 flex flex-col items-center gap-1 h-full justify-end">
+                  <span className="text-[10px] font-black text-gray-500">$250B</span>
+                  <motion.div
+                    initial={{ height: 0 }}
+                    whileInView={{ height: '52%' }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3, duration: 0.9, type: 'spring', bounce: 0.3 }}
+                    className="w-full bg-gray-200 rounded-t-md"
+                  />
+                </div>
+                {/* Bar 2: $37B (US creator spend) */}
+                <div className="flex-1 flex flex-col items-center gap-1 h-full justify-end">
+                  <span className="text-[10px] font-black text-blue-500">$37B</span>
+                  <motion.div
+                    initial={{ height: 0 }}
+                    whileInView={{ height: '28%' }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5, duration: 0.9, type: 'spring', bounce: 0.3 }}
+                    className="w-full bg-blue-300 rounded-t-md"
+                  />
+                </div>
+                {/* Spacer bars representing growth trend */}
+                {[35, 45, 58, 72].map((h, i) => (
+                  <div key={i} className="flex-1 flex flex-col items-center gap-1 h-full justify-end">
+                    <span className="text-[10px] font-bold text-gray-300 opacity-0">.</span>
+                    <motion.div
+                      initial={{ height: 0 }}
+                      whileInView={{ height: `${h}%` }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.6 + i * 0.1, duration: 0.9, type: 'spring', bounce: 0.3 }}
+                      className="w-full bg-gray-200 rounded-t-md"
+                    />
+                  </div>
+                ))}
+                {/* Bar: $480B (2027 target) */}
+                <div className="flex-1 flex flex-col items-center gap-1 h-full justify-end">
+                  <span className="text-[10px] font-black text-go-orange">$480B</span>
+                  <motion.div
+                    initial={{ height: 0 }}
+                    whileInView={{ height: '100%' }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 1.0, duration: 0.9, type: 'spring', bounce: 0.3 }}
+                    className="w-full bg-go-orange rounded-t-md shadow-sm"
+                  />
+                </div>
+              </div>
+              {/* X-axis labels */}
+              <div className="absolute bottom-0 left-10 right-0 flex items-center px-4 pb-2 gap-3">
+                <span className="flex-1 text-center text-[10px] font-bold text-gray-400">الآن</span>
+                <span className="flex-1 text-center text-[10px] font-bold text-blue-400">أمريكا</span>
+                <span className="flex-[4] text-center text-[10px] font-bold text-gray-300">نمو متوقع</span>
+                <span className="flex-1 text-center text-[10px] font-bold text-go-orange">2027</span>
+              </div>
             </div>
           </div>
         </motion.div>

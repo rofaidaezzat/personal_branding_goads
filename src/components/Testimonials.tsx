@@ -1,118 +1,244 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Play, Quote, Star } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Play, ChevronLeft, ChevronRight, X } from 'lucide-react';
+
+const videos = [
+  { id: '1MpKpoXdYeavJja_btimcHwjGF_Oo5g29' },
+  { id: '1u0Xh0PXnSobD3L4qTGdO7YDzeThU7xrx' },
+  { id: '1bruoDPwP_Q9VFifKOCHkC9EeiArMT9Ra' },
+  { id: '1vzjtEA8ajiyq6dfD7jNvNvYoh-WsRQ8P' },
+  { id: '1XvK58V8wL471v49U0prI94tTLfccHzPa' },
+  { id: '1JJRX9rADXp3RogvbPWlpc2tjtIShAs0g' },
+  { id: '1jBbc41RSOT5kTiqI1FM12H26MLvjo2Kn' },
+  { id: '1QYhDJmx-J5UxlWURE5Figsrs4jfJ5jtZ' },
+  { id: '1nKfS0T-Wt_KbbeKYhSJm2UVvSeUQCmZN' },
+];
+
+function driveEmbed(id: string) {
+  return `https://drive.google.com/file/d/${id}/preview`;
+}
+
+function driveThumbnail(id: string, width = 800) {
+  return `https://lh3.googleusercontent.com/d/${id}=w${width}`;
+}
+
 export const Testimonials = () => {
-  const videos = [{
-    name: 'د. مصطفى كمال',
-    profession: 'استشاري جراحة',
-    quote: 'الناس بدأت تعرفني أكتر وتثق فيا قبل ما تيجي العيادة.',
-    image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    featured: true
-  }, {
-    name: 'م. رامي سعيد',
-    profession: 'مؤسس شركة برمجيات',
-    quote: 'الإيرادات زادت بشكل ملحوظ بعد ما البراند بقى واضح.',
-    image: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-    featured: false
-  }, {
-    name: 'أ. ندى طارق',
-    profession: 'Life Coach',
-    quote: 'المحتوى بقى احترافي والبراند بقى له اتجاه واضح جداً.',
-    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-    featured: false
-  }, {
-    name: 'أ. خالد حسن',
-    profession: 'مستشار مالي',
-    quote: 'بقيت أوضح في السوق والعملاء بتيجي وهي واثقة.',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-    featured: false
-  }];
-  return <section className="py-24 bg-go-warm">
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+  };
+
+  const prevSlide = () => {
+    setActiveIndex((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setActiveIndex((prev) => (prev === videos.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevLightbox = () => {
+    setLightboxIndex((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
+  };
+
+  const nextLightbox = () => {
+    setLightboxIndex((prev) => (prev === videos.length - 1 ? 0 : prev + 1));
+  };
+
+  return (
+    <section id="results" className="py-24 bg-go-warm overflow-hidden">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <motion.h2 initial={{
-          opacity: 0,
-          y: 20
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} viewport={{
-          once: true
-        }} className="text-3xl md:text-4xl font-black mb-6">
-            اسمع من عملائنا
+
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-go-orange font-black text-sm tracking-widest uppercase mb-3"
+          >
+            آراء العملاء
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl md:text-4xl lg:text-5xl font-black text-go-black leading-tight"
+          >
+            اسمع منهم بنفسك 🎥
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-gray-500 mt-4 text-lg"
+          >
+            مش كلامنا — ده كلام عملاء حقيقيين شافوا نتايج حقيقية
+          </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-8">
-          {/* Featured Video */}
-          <motion.div initial={{
-          opacity: 0,
-          x: 40
-        }} whileInView={{
-          opacity: 1,
-          x: 0
-        }} viewport={{
-          once: true
-        }} className="lg:col-span-7 relative rounded-3xl overflow-hidden shadow-2xl group cursor-pointer h-[400px] lg:h-auto">
-            <img src={videos[0].image} alt={videos[0].name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-go-black/80 via-go-black/20 to-transparent transition-colors group-hover:bg-go-black/40" />
+        {/* ── Featured Slider ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="relative mb-10"
+        >
+          {/* Main featured card */}
+          <div
+            className="relative w-full rounded-3xl overflow-hidden shadow-2xl bg-go-black cursor-pointer group"
+            style={{ aspectRatio: '16/7' }}
+            onClick={() => openLightbox(activeIndex)}
+          >
+            <img
+              key={activeIndex}
+              src={driveThumbnail(videos[activeIndex].id, 800)}
+              alt={`Testimonial ${activeIndex + 1}`}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80"
+            />
 
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-go-black/70 via-transparent to-transparent" />
+
+            {/* Play button */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-20 h-20 bg-go-orange text-white rounded-full flex items-center justify-center shadow-glow group-hover:scale-110 transition-transform">
-                <Play size={32} fill="currentColor" className="ml-2" />
+              <div className="w-20 h-20 bg-go-orange text-white rounded-full flex items-center justify-center shadow-glow group-hover:scale-110 transition-transform duration-300">
+                <Play size={34} fill="currentColor" className="ml-1" />
               </div>
             </div>
 
-            <div className="absolute bottom-8 right-8 left-8">
-              <Quote className="text-go-orange mb-4 opacity-50" size={40} />
-              <h3 className="text-2xl md:text-3xl font-black text-white mb-2">
-                "{videos[0].quote}"
-              </h3>
-              <div className="flex items-center gap-3">
-                <span className="font-bold text-white">{videos[0].name}</span>
-                <span className="w-1 h-1 bg-go-orange rounded-full" />
-                <span className="text-sm font-bold text-gray-300">
-                  {videos[0].profession}
-                </span>
-              </div>
+            {/* Counter badge */}
+            <div className="absolute top-5 left-5 bg-white/20 backdrop-blur-sm text-white text-sm font-bold px-3 py-1 rounded-full">
+              {activeIndex + 1} / {videos.length}
             </div>
-          </motion.div>
-
-          {/* Smaller Videos Grid */}
-          <div className="lg:col-span-5 grid sm:grid-cols-2 lg:grid-cols-1 gap-6">
-            {videos.slice(1).map((video, index) => <motion.div key={index} initial={{
-            opacity: 0,
-            x: -40
-          }} whileInView={{
-            opacity: 1,
-            x: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            delay: index * 0.1
-          }} className="relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer h-48 lg:h-auto lg:flex-1">
-                <img src={video.image} alt={video.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-go-black/80 to-transparent transition-colors group-hover:bg-go-black/40" />
-
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-12 h-12 bg-white/90 backdrop-blur-sm text-go-orange rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                    <Play size={20} fill="currentColor" className="ml-1" />
-                  </div>
-                </div>
-
-                <div className="absolute bottom-4 right-4 left-4">
-                  <p className="text-sm font-bold text-white mb-1 line-clamp-1">
-                    "{video.quote}"
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-gray-300">
-                      {video.name}
-                    </span>
-                  </div>
-                </div>
-              </motion.div>)}
           </div>
+
+          {/* Prev / Next arrows */}
+          <button
+            onClick={prevSlide}
+            className="absolute top-1/2 -translate-y-1/2 right-4 lg:-right-6 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-go-black hover:text-go-orange hover:shadow-xl transition-all z-10"
+          >
+            <ChevronRight size={22} />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute top-1/2 -translate-y-1/2 left-4 lg:-left-6 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-go-black hover:text-go-orange hover:shadow-xl transition-all z-10"
+          >
+            <ChevronLeft size={22} />
+          </button>
+        </motion.div>
+
+        {/* ── Thumbnail Strip ── */}
+        <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-9 gap-2 lg:gap-3 mb-8">
+          {videos.map((v, i) => (
+            <motion.div
+              key={v.id}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.04 }}
+              onClick={() => setActiveIndex(i)}
+              className={`relative rounded-xl overflow-hidden cursor-pointer transition-all duration-300 aspect-square ${
+                i === activeIndex
+                  ? 'ring-2 ring-go-orange ring-offset-2 scale-105 shadow-glow'
+                  : 'opacity-60 hover:opacity-100 hover:scale-105'
+              }`}
+            >
+              <img
+                src={driveThumbnail(v.id, 300)}
+                alt={`Testimonial ${i + 1}`}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-7 h-7 bg-white/80 backdrop-blur-sm text-go-orange rounded-full flex items-center justify-center">
+                  <Play size={12} fill="currentColor" className="ml-0.5" />
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
+
       </div>
-    </section>;
+
+      {/* ── Lightbox ── */}
+      <AnimatePresence>
+        {lightboxOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={closeLightbox}
+              className="fixed inset-0 bg-black/90 backdrop-blur-sm z-[80]"
+            />
+
+            {/* Modal */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 30 }}
+              transition={{ type: 'spring', damping: 26, stiffness: 240 }}
+              className="fixed inset-0 z-[90] flex items-center justify-center p-4 pointer-events-none"
+            >
+              <div className="bg-go-black rounded-3xl overflow-hidden w-full max-w-4xl shadow-2xl pointer-events-auto relative">
+
+                {/* Close */}
+                <button
+                  onClick={closeLightbox}
+                  className="absolute top-4 left-4 z-10 w-10 h-10 bg-white/20 hover:bg-white/40 text-white rounded-full flex items-center justify-center transition-colors"
+                >
+                  <X size={20} />
+                </button>
+
+                {/* Counter */}
+                <div className="absolute top-4 right-4 z-10 bg-white/20 backdrop-blur-sm text-white text-sm font-bold px-3 py-1 rounded-full">
+                  {lightboxIndex + 1} / {videos.length}
+                </div>
+
+                {/* Prev */}
+                <button
+                  onClick={prevLightbox}
+                  className="absolute top-1/2 -translate-y-1/2 right-4 z-10 w-11 h-11 bg-white/20 hover:bg-go-orange text-white rounded-full flex items-center justify-center transition-all"
+                >
+                  <ChevronRight size={20} />
+                </button>
+
+                {/* Next */}
+                <button
+                  onClick={nextLightbox}
+                  className="absolute top-1/2 -translate-y-1/2 left-4 z-10 w-11 h-11 bg-white/20 hover:bg-go-orange text-white rounded-full flex items-center justify-center transition-all"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+
+                {/* Video iframe */}
+                <div className="aspect-video w-full">
+                  <iframe
+                    ref={iframeRef}
+                    key={lightboxIndex}
+                    src={driveEmbed(videos[lightboxIndex].id)}
+                    className="w-full h-full"
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                    title={`Testimonial ${lightboxIndex + 1}`}
+                  />
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </section>
+  );
 };
