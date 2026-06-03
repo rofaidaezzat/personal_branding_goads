@@ -7,17 +7,17 @@ export const Method = () => {
     icon: <UserCheck />,
     title: 'بنفهمك',
     desc: 'بنبني أساس قوي من خلال فهم شخصيتك، خدمتك، وأهدافك.',
-    image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    image: 'https://lh3.googleusercontent.com/d/1i0YOsPiCVvJTpX5dEZutPL9qq41lM-SW'
   }, {
     icon: <Search />,
     title: 'بنحلل وضعك والمنافسين',
     desc: 'بندرس السوق ونشوف المنافسين بيعملوا إيه عشان نلاقي نقطة تميزك.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    image: 'https://lh3.googleusercontent.com/d/10EJd0mX60GZEoNKTUaBIprK41CVGSQLW'
   }, {
     icon: <Target />,
     title: 'بنبني استراتيجية براند شخصية',
     desc: 'بنحدد الـ Content Pillars وطريقة الظهور اللي هتبني ثقة مع جمهورك.',
-    image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    image: 'https://lh3.googleusercontent.com/d/1BuQ7luEfPxNBd3EDN07mN1keyrdSx0PL'
   }, {
     icon: <Camera />,
     title: 'بنجهز التصوير والمحتوى',
@@ -27,12 +27,12 @@ export const Method = () => {
     icon: <Video />,
     title: 'بنطلع ريلز وتصميمات',
     desc: 'إنتاج عالي الجودة بيخليك تظهر بشكل بريميوم ومختلف.',
-    image: 'https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    image: 'https://lh3.googleusercontent.com/d/16hX0AE6Mq8fpRUxggdOyjnyTDs_oq1Xt'
   }, {
     icon: <LineChart />,
     title: 'بنراجع النمو ونطور',
     desc: 'متابعة مستمرة للأرقام عشان نحسن الاستراتيجية ونزود النتائج.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+    image: 'https://lh3.googleusercontent.com/d/1lffLPokOkPdVQ0PZTj_8QL1LCxVbSa5M'
   }];
   return <section id="story" className="py-24 bg-go-warm">
       <div className="container mx-auto px-4 md:px-8">
