@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from './Shared';
 import { TrendingUp, Users, Play } from 'lucide-react';
-export const Hero = ({ onOpenPopup }: {onOpenPopup: () => void;}) => {
+export const Hero = ({ onOpenPopup }: { onOpenPopup: () => void; }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const { scrollY } = useScroll();
   const yUp = useTransform(scrollY, [0, 500], [0, -30]);
@@ -30,7 +30,7 @@ export const Hero = ({ onOpenPopup }: {onOpenPopup: () => void;}) => {
                 duration: 0.6,
                 ease: 'easeOut'
               }}>
-              
+
               <h1 className="text-5xl md:text-6xl lg:text-[70px] font-black leading-[1.1] tracking-tight mb-6 text-go-black">
                 مش محتاج تظهر أكتر بس… <br />
                 <span className="relative inline-block mt-2">
@@ -48,7 +48,7 @@ export const Hero = ({ onOpenPopup }: {onOpenPopup: () => void;}) => {
                       ease: 'circOut'
                     }}
                     className="absolute bottom-2 right-0 left-0 h-4 bg-go-orange/20 -z-10 origin-right" />
-                  
+
                 </span>
               </h1>
 
@@ -84,7 +84,7 @@ export const Hero = ({ onOpenPopup }: {onOpenPopup: () => void;}) => {
                 ease: 'easeOut'
               }}
               className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl z-10 bg-go-black">
-              
+
               {isPlaying ? (
                 <iframe
                   src="https://drive.google.com/file/d/1Q8ReLRSMEyytGX7hIBSaoLRQ_5Dc440z/preview?autoplay=1"
@@ -94,7 +94,7 @@ export const Hero = ({ onOpenPopup }: {onOpenPopup: () => void;}) => {
                   title="Hero Video"
                 />
               ) : (
-                <div 
+                <div
                   className="relative w-full h-full cursor-pointer group"
                   onClick={() => setIsPlaying(true)}
                 >
@@ -103,7 +103,7 @@ export const Hero = ({ onOpenPopup }: {onOpenPopup: () => void;}) => {
                     alt="Professional Business Owner"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"
                   />
-                  
+
                   {/* Play Button Overlay */}
                   <div className="absolute inset-0 flex items-center justify-center bg-go-black/20 group-hover:bg-go-black/40 transition-colors duration-300">
                     <div className="w-20 h-20 bg-go-orange text-white rounded-full flex items-center justify-center shadow-glow group-hover:scale-110 transition-transform duration-300">
@@ -117,7 +117,7 @@ export const Hero = ({ onOpenPopup }: {onOpenPopup: () => void;}) => {
                   </div>
                 </div>
               )}
-              
+
               <div className="absolute inset-0 bg-gradient-to-t from-go-black/40 to-transparent pointer-events-none" />
             </motion.div>
 
@@ -139,7 +139,7 @@ export const Hero = ({ onOpenPopup }: {onOpenPopup: () => void;}) => {
               style={{
                 y: yUp
               }}>
-              
+
               <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
                 <TrendingUp size={24} />
               </div>
@@ -169,7 +169,7 @@ export const Hero = ({ onOpenPopup }: {onOpenPopup: () => void;}) => {
               style={{
                 y: yDown
               }}>
-              
+
               <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
                 <Users size={24} />
               </div>

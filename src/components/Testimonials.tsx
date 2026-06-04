@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, ChevronLeft, ChevronRight, X } from 'lucide-react';
 
@@ -149,11 +149,10 @@ export const Testimonials = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.04 }}
               onClick={() => setActiveIndex(i)}
-              className={`relative rounded-xl overflow-hidden cursor-pointer transition-all duration-300 aspect-square ${
-                i === activeIndex
+              className={`relative rounded-xl overflow-hidden cursor-pointer transition-all duration-300 aspect-square ${i === activeIndex
                   ? 'ring-2 ring-go-orange ring-offset-2 scale-105 shadow-glow'
                   : 'opacity-60 hover:opacity-100 hover:scale-105'
-              }`}
+                }`}
             >
               <img
                 src={driveThumbnail(v.id, 300)}

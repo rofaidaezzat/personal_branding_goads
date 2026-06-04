@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Globe, ArrowLeft } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 export const Button = ({
   children,
@@ -8,20 +8,14 @@ export const Button = ({
   className = '',
   onClick,
   type = 'button'
-
-
-
-
-
-
-}: {children: React.ReactNode;variant?: 'primary' | 'secondary' | 'outline';className?: string;onClick?: () => void;type?: 'button' | 'submit';}) => {
+}: { children: React.ReactNode; variant?: 'primary' | 'secondary' | 'outline'; className?: string; onClick?: () => void; type?: 'button' | 'submit'; }) => {
   const baseStyle =
-  'inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold transition-all duration-300 ease-out';
+    'inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold transition-all duration-300 ease-out';
   const variants = {
     primary:
-    'bg-go-orange text-white hover:bg-[#d94f24] hover:shadow-glow hover:-translate-y-0.5',
+      'bg-go-orange text-white hover:bg-[#d94f24] hover:shadow-glow hover:-translate-y-0.5',
     secondary:
-    'bg-go-black text-white hover:bg-gray-800 hover:-translate-y-0.5',
+      'bg-go-black text-white hover:bg-gray-800 hover:-translate-y-0.5',
     outline: 'border-2 border-go-orange text-go-orange hover:bg-go-orangeLight'
   };
   return (
@@ -29,12 +23,12 @@ export const Button = ({
       type={type}
       onClick={onClick}
       className={`${`${`${`${`${baseStyle} ${variants[variant]} ${className}`} font-[500] pt-[12px] pb-[12px] pl-[32px] pr-[32px]`} font-[500]`} font-[500]`} font-[500]`}>
-      
+
       {children}
     </button>);
 
 };
-export const Navbar = ({ onOpenPopup }: {onOpenPopup: () => void;}) => {
+export const Navbar = ({ onOpenPopup }: { onOpenPopup: () => void; }) => {
   const { i18n } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -80,7 +74,7 @@ export const Navbar = ({ onOpenPopup }: {onOpenPopup: () => void;}) => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/80 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'}`}>
-      
+
       <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">
@@ -104,7 +98,7 @@ export const Navbar = ({ onOpenPopup }: {onOpenPopup: () => void;}) => {
 
         {/* Actions */}
         <div className="hidden lg:flex items-center gap-4">
-          <button 
+          <button
             onClick={toggleLanguage}
             className="flex items-center gap-1 text-gray-600 hover:text-go-black font-semibold text-sm transition-colors"
           >
@@ -161,7 +155,7 @@ export const Navbar = ({ onOpenPopup }: {onOpenPopup: () => void;}) => {
             </nav>
 
             <div className="mt-auto flex flex-col gap-4">
-              <button 
+              <button
                 onClick={toggleLanguage}
                 className="flex items-center justify-center gap-2 text-gray-600 font-bold py-3 bg-gray-50 rounded-xl"
               >
@@ -191,48 +185,48 @@ export const PopupForm = ({
 
 
 
-}: {isOpen: boolean;onClose: () => void;}) => {
+}: { isOpen: boolean; onClose: () => void; }) => {
   const [type, setType] = useState<'individual' | 'company'>('individual');
   return (
     <AnimatePresence>
       {isOpen &&
-      <>
+        <>
           <motion.div
-          initial={{
-            opacity: 0
-          }}
-          animate={{
-            opacity: 1
-          }}
-          exit={{
-            opacity: 0
-          }}
-          onClick={onClose}
-          className="fixed inset-0 bg-go-black/40 backdrop-blur-sm z-[60]" />
-        
-          <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 pointer-events-none">
-            <motion.div
             initial={{
-              opacity: 0,
-              scale: 0.96,
-              y: 20
+              opacity: 0
             }}
             animate={{
-              opacity: 1,
-              scale: 1,
-              y: 0
+              opacity: 1
             }}
             exit={{
-              opacity: 0,
-              scale: 0.96,
-              y: 20
+              opacity: 0
             }}
-            className="bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden pointer-events-auto relative">
-            
+            onClick={onClose}
+            className="fixed inset-0 bg-go-black/40 backdrop-blur-sm z-[60]" />
+
+          <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 pointer-events-none">
+            <motion.div
+              initial={{
+                opacity: 0,
+                scale: 0.96,
+                y: 20
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                y: 0
+              }}
+              exit={{
+                opacity: 0,
+                scale: 0.96,
+                y: 20
+              }}
+              className="bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden pointer-events-auto relative">
+
               <button
-              onClick={onClose}
-              className="absolute top-4 left-4 p-2 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-600 transition-colors z-10">
-              
+                onClick={onClose}
+                className="absolute top-4 left-4 p-2 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-600 transition-colors z-10">
+
                 <X size={20} />
               </button>
 
@@ -248,18 +242,18 @@ export const PopupForm = ({
                 </div>
 
                 <form
-                className="space-y-5"
-                onSubmit={(e) => e.preventDefault()}>
-                
+                  className="space-y-5"
+                  onSubmit={(e) => e.preventDefault()}>
+
                   <div>
                     <label className="block text-sm font-bold text-gray-700 mb-2">
                       الاسم
                     </label>
                     <input
-                    type="text"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-go-orange focus:ring-2 focus:ring-go-orange/20 outline-none transition-all bg-gray-50 focus:bg-white"
-                    placeholder="اسمك بالكامل" />
-                  
+                      type="text"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-go-orange focus:ring-2 focus:ring-go-orange/20 outline-none transition-all bg-gray-50 focus:bg-white"
+                      placeholder="اسمك بالكامل" />
+
                   </div>
 
                   <div>
@@ -268,17 +262,17 @@ export const PopupForm = ({
                     </label>
                     <div className="flex p-1 bg-gray-100 rounded-xl">
                       <button
-                      type="button"
-                      onClick={() => setType('individual')}
-                      className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${type === 'individual' ? 'bg-white text-go-black shadow-sm' : 'text-gray-500 hover:text-go-black'}`}>
-                      
+                        type="button"
+                        onClick={() => setType('individual')}
+                        className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${type === 'individual' ? 'bg-white text-go-black shadow-sm' : 'text-gray-500 hover:text-go-black'}`}>
+
                         فرد
                       </button>
                       <button
-                      type="button"
-                      onClick={() => setType('company')}
-                      className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${type === 'company' ? 'bg-white text-go-black shadow-sm' : 'text-gray-500 hover:text-go-black'}`}>
-                      
+                        type="button"
+                        onClick={() => setType('company')}
+                        className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${type === 'company' ? 'bg-white text-go-black shadow-sm' : 'text-gray-500 hover:text-go-black'}`}>
+
                         شركة
                       </button>
                     </div>
@@ -290,22 +284,22 @@ export const PopupForm = ({
                         رقم الموبايل / واتساب
                       </label>
                       <input
-                      type="tel"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-go-orange focus:ring-2 focus:ring-go-orange/20 outline-none transition-all bg-gray-50 focus:bg-white text-left"
-                      dir="ltr"
-                      placeholder="+20 100 000 0000" />
-                    
+                        type="tel"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-go-orange focus:ring-2 focus:ring-go-orange/20 outline-none transition-all bg-gray-50 focus:bg-white text-left"
+                        dir="ltr"
+                        placeholder="+20 100 000 0000" />
+
                     </div>
                     <div>
                       <label className="block text-sm font-bold text-gray-700 mb-2">
                         رقم إضافي (اختياري)
                       </label>
                       <input
-                      type="tel"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-go-orange focus:ring-2 focus:ring-go-orange/20 outline-none transition-all bg-gray-50 focus:bg-white text-left"
-                      dir="ltr"
-                      placeholder="+20 100 000 0000" />
-                    
+                        type="tel"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-go-orange focus:ring-2 focus:ring-go-orange/20 outline-none transition-all bg-gray-50 focus:bg-white text-left"
+                        dir="ltr"
+                        placeholder="+20 100 000 0000" />
+
                     </div>
                   </div>
 
@@ -314,9 +308,9 @@ export const PopupForm = ({
                       تفاصيل أكتر عن نشاطك أو هدفك
                     </label>
                     <textarea
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-go-orange focus:ring-2 focus:ring-go-orange/20 outline-none transition-all bg-gray-50 focus:bg-white resize-none h-24"
-                    placeholder="احكي لنا باختصار عن مجالك واللي حابب تحققه...">
-                  </textarea>
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-go-orange focus:ring-2 focus:ring-go-orange/20 outline-none transition-all bg-gray-50 focus:bg-white resize-none h-24"
+                      placeholder="احكي لنا باختصار عن مجالك واللي حابب تحققه...">
+                    </textarea>
                   </div>
 
                   <Button type="submit" className="w-full py-4 text-lg mt-2">
