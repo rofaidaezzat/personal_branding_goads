@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Navbar, PopupForm } from './components/Shared';
 import { Hero } from './components/Hero';
 import { SocialProof } from './components/SocialProof';
@@ -15,7 +15,6 @@ import { Process } from './components/Process';
 import { Testimonials } from './components/Testimonials';
 import { FAQ } from './components/FAQ';
 import { Contactus } from './components/Contactus';
-import { FinalCTA } from './components/FinalCTA';
 import { useTranslation } from 'react-i18next';
 
 export function App() {
@@ -23,43 +22,36 @@ export function App() {
   const { i18n } = useTranslation();
   const dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
 
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return <div dir={dir} className={`min-h-screen bg-white text-go-black overflow-x-hidden ${i18n.language === 'ar' ? 'font-arabic' : 'font-sans'}`}>
-      <Navbar onOpenPopup={scrollToContact} />
+    <Navbar onOpenPopup={() => setIsPopupOpen(true)} />
 
-      <main>
-        <Hero onOpenPopup={scrollToContact} />
-        <SocialProof />
-        <Problem />
-        <WhatIsBranding />
-        <Revenue />
-        <Method />
-        <Audience />
-        <Solution />
-        <SuccessStories />
-        <Package onOpenPopup={scrollToContact} />
-        <Differentiation />
-        <Process />
-        <Testimonials />
-        <FAQ onOpenPopup={scrollToContact} />
-        <Contactus />
-        {/* <FinalCTA /> */}
-      </main>
+    <main>
+      <Hero onOpenPopup={() => setIsPopupOpen(true)} />
+      <SocialProof />
+      <Problem />
+      <WhatIsBranding />
+      <Revenue />
+      <Method />
+      <Audience />
+      <Solution />
+      <SuccessStories />
+      <Package onOpenPopup={() => setIsPopupOpen(true)} />
+      <Differentiation />
+      <Process />
+      <Testimonials />
+      <FAQ onOpenPopup={() => setIsPopupOpen(true)} />
+      <Contactus />
+      {/* <FinalCTA /> */}
+    </main>
 
-      <footer className="bg-go-black text-white py-8 border-t border-white/10 text-center">
-        <div className="container mx-auto px-4">
-          <p className="text-gray-400 font-bold text-sm">
-            © {new Date().getFullYear()} GO ADS. جميع الحقوق محفوظة.
-          </p>
-        </div>
-      </footer>
+    <footer className="bg-go-black text-white py-8 border-t border-white/10 text-center">
+      <div className="container mx-auto px-4">
+        <p className="text-gray-400 font-bold text-sm">
+          © {new Date().getFullYear()} GO ADS. جميع الحقوق محفوظة.
+        </p>
+      </div>
+    </footer>
 
-      <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
-    </div>;
+    <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
+  </div>;
 }
