@@ -5,6 +5,7 @@ export const SuccessStories = () => {
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
   const stories = [{
     name: 'دكتور أحمد ناجي',
+    brief: 'استشاري نساء وتوليد',
     profession: 'استشاري النساء والتوليد دبلومة الحقن المجهري _ بمستشفيات برمنجهام _ إنجلترا',
     videoId: '1GYNamhjp1uo-FEQsAi6gFVLqkAA0boVb',
     image: 'https://lh3.googleusercontent.com/d/1GYNamhjp1uo-FEQsAi6gFVLqkAA0boVb=w600',
@@ -19,6 +20,7 @@ export const SuccessStories = () => {
     }]
   }, {
     name: 'دكتور بسمة بدير',
+    brief: 'أخصائي نساء وتوليد',
     profession: 'اخصائي النساء والتوليد وتأخر الإنجاب وجراحة المناظير النسائية',
     videoId: '1yL7RaWjESQFCgXc2j2wndyrx8kWl1ImU',
     image: 'https://lh3.googleusercontent.com/d/1yL7RaWjESQFCgXc2j2wndyrx8kWl1ImU=w600',
@@ -33,6 +35,7 @@ export const SuccessStories = () => {
     }]
   }, {
     name: 'دكتور أحمد دياب',
+    brief: 'استشاري نساء وتوليد',
     profession: 'استشاري جراحات النساء والتوليد وتأخر الإنجاب',
     videoId: '1hj-qUsVzB91RMJPwuaMj7xmVs62uE-ii',
     image: 'https://lh3.googleusercontent.com/d/1hj-qUsVzB91RMJPwuaMj7xmVs62uE-ii=w600',
@@ -47,6 +50,7 @@ export const SuccessStories = () => {
     }]
   }, {
     name: 'المحامي حامد',
+    brief: 'محامي شركات',
     profession: 'محامي شركات',
     videoId: '1_e2klfyMjUV963vQv5JZWOZe30V_MUA9',
     image: 'https://lh3.googleusercontent.com/d/1_e2klfyMjUV963vQv5JZWOZe30V_MUA9=w600',
@@ -61,6 +65,7 @@ export const SuccessStories = () => {
     }]
   }, {
     name: 'ذياد ناصر',
+    brief: 'طبيب بيطري',
     profession: 'طبيب بيطري',
     videoId: '1znPaRCTlm9_LAQ4neg0LCBOC6JakksGc',
     image: 'https://lh3.googleusercontent.com/d/1znPaRCTlm9_LAQ4neg0LCBOC6JakksGc=w600',
@@ -75,6 +80,7 @@ export const SuccessStories = () => {
     }]
   }, {
     name: 'أ. أحمد رأفت',
+    brief: 'مستشار عقاري',
     profession: 'مستشار عقاري',
     videoId: '1DT0nvzMbEFsMZf4BXGEx8hQri38m9gEU',
     image: 'https://lh3.googleusercontent.com/d/1DT0nvzMbEFsMZf4BXGEx8hQri38m9gEU=w600',
@@ -150,15 +156,18 @@ export const SuccessStories = () => {
 
             {/* Badges */}
             <div className="absolute top-4 right-4 bg-go-orange text-white text-xs font-bold px-3 py-1.5 rounded-full">
-              {story.profession}
+              {story.brief}
             </div>
           </div>
 
           {/* Content Area */}
           <div className="p-6">
-            <h3 className="text-xl font-black text-go-black mb-4">
+            <h3 className="text-xl font-black text-go-black mb-1">
               {story.name}
             </h3>
+            <p className="text-xs text-gray-500 font-bold mb-4">
+              {story.profession}
+            </p>
 
             <div className="space-y-4 mb-6">
               <div>
