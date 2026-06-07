@@ -28,7 +28,7 @@ export const Button = ({
     </button>);
 
 };
-export const Navbar = ({ onOpenPopup }: { onOpenPopup: () => void; }) => {
+export const Navbar = () => {
   const { i18n } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -71,6 +71,13 @@ export const Navbar = ({ onOpenPopup }: { onOpenPopup: () => void; }) => {
     }
   ];
 
+  const handleContactClick = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/80 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'}`}>
@@ -105,7 +112,7 @@ export const Navbar = ({ onOpenPopup }: { onOpenPopup: () => void; }) => {
             <Globe size={16} />
             <span>{isRtl ? 'EN' : 'العربية'}</span>
           </button>
-          <Button onClick={onOpenPopup} className="text-sm px-5 py-2.5">
+          <Button onClick={handleContactClick} className="text-sm px-5 py-2.5">
             احجز اجتماع مجاني
           </Button>
         </div>
@@ -165,7 +172,7 @@ export const Navbar = ({ onOpenPopup }: { onOpenPopup: () => void; }) => {
               <Button
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  onOpenPopup();
+                  handleContactClick();
                 }}
                 className="w-full py-4 text-lg"
               >

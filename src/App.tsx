@@ -23,10 +23,10 @@ export function App() {
   const dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
 
   return <div dir={dir} className={`min-h-screen bg-white text-go-black overflow-x-hidden ${i18n.language === 'ar' ? 'font-arabic' : 'font-sans'}`}>
-    <Navbar onOpenPopup={() => setIsPopupOpen(true)} />
+    <Navbar />
 
     <main>
-      <Hero onOpenPopup={() => setIsPopupOpen(true)} />
+      <Hero />
       <SocialProof />
       <Problem />
       <WhatIsBranding />

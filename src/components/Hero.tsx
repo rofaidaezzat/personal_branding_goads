@@ -2,11 +2,19 @@ import { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from './Shared';
 import { TrendingUp, Users, Play } from 'lucide-react';
-export const Hero = ({ onOpenPopup }: { onOpenPopup: () => void; }) => {
+export const Hero = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const { scrollY } = useScroll();
   const yUp = useTransform(scrollY, [0, 500], [0, -30]);
   const yDown = useTransform(scrollY, [0, 500], [0, 40]);
+
+  const handleContactClick = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-24 overflow-hidden bg-go-warm">
       {/* Background Accent */}
@@ -59,7 +67,7 @@ export const Hero = ({ onOpenPopup }: { onOpenPopup: () => void; }) => {
               </p>
 
               <div className="flex justify-center">
-                <Button onClick={onOpenPopup} className="text-lg px-8 py-4">
+                <Button onClick={handleContactClick} className="text-lg px-8 py-4">
                   احجز اجتماع مجاني
                 </Button>
               </div>
