@@ -4,8 +4,8 @@ import { Play, TrendingUp, Users, Eye, X } from 'lucide-react';
 export const SuccessStories = () => {
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
   const stories = [{
-    name: 'د. ناجي',
-    profession: 'دكتور نسا',
+    name: 'دكتور أحمد ناجي',
+    profession: 'استشاري النساء والتوليد دبلومة الحقن المجهري _ بمستشفيات برمنجهام _ إنجلترا',
     videoId: '1GYNamhjp1uo-FEQsAi6gFVLqkAA0boVb',
     image: 'https://lh3.googleusercontent.com/d/1GYNamhjp1uo-FEQsAi6gFVLqkAA0boVb=w600',
     before: 'كان الظهور ضعيف، المحتوى غير منتظم، والصورة العامة مش بتعكس قوة الخدمة.',
@@ -18,8 +18,8 @@ export const SuccessStories = () => {
       text: 'زيادة واضحة في الاستفسارات'
     }]
   }, {
-    name: 'د. بسمة',
-    profession: 'دكتورة نسا',
+    name: 'دكتور بسمة بدير',
+    profession: 'اخصائي النساء والتوليد وتأخر الإنجاب وجراحة المناظير النسائية',
     videoId: '1yL7RaWjESQFCgXc2j2wndyrx8kWl1ImU',
     image: 'https://lh3.googleusercontent.com/d/1yL7RaWjESQFCgXc2j2wndyrx8kWl1ImU=w600',
     before: 'الظهور غير منظم، وصعوبة في إيصال المعلومة الطبية للجمهور بشكل مبسط.',
@@ -32,8 +32,8 @@ export const SuccessStories = () => {
       text: 'زيادة 150% في الحجوزات'
     }]
   }, {
-    name: 'د. دياب',
-    profession: 'دكتور نسا',
+    name: 'دكتور أحمد دياب',
+    profession: 'استشاري جراحات النساء والتوليد وتأخر الإنجاب',
     videoId: '1hj-qUsVzB91RMJPwuaMj7xmVs62uE-ii',
     image: 'https://lh3.googleusercontent.com/d/1hj-qUsVzB91RMJPwuaMj7xmVs62uE-ii=w600',
     before: 'صعوبة في إيصال المعلومات الطبية للمرضى بشكل مبسط.',
@@ -60,8 +60,8 @@ export const SuccessStories = () => {
       text: 'ريلز حققت انتشار قوي'
     }]
   }, {
-    name: 'د. زياد',
-    profession: 'أخصائي تغذية وعلاج طبيعي',
+    name: 'ذياد ناصر',
+    profession: 'طبيب بيطري',
     videoId: '1znPaRCTlm9_LAQ4neg0LCBOC6JakksGc',
     image: 'https://lh3.googleusercontent.com/d/1znPaRCTlm9_LAQ4neg0LCBOC6JakksGc=w600',
     before: 'محتوى غير منظم وصعوبة في جذب عملاء للاستشارات الشخصية.',
