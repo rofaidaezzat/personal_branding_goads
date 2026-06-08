@@ -12,6 +12,7 @@ const videos = [
   { id: '1jBbc41RSOT5kTiqI1FM12H26MLvjo2Kn' },
   { id: '1QYhDJmx-J5UxlWURE5Figsrs4jfJ5jtZ' },
   { id: '1nKfS0T-Wt_KbbeKYhSJm2UVvSeUQCmZN' },
+  { id: '1W-IbbNFrGbcHGssAYSOAK_kK82yw3Df9' },
 ];
 
 function driveEmbed(id: string) {
@@ -27,6 +28,20 @@ export const Testimonials = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = 240;
+      const dir = direction === 'left' ? -1 : 1;
+      const isRTL = document.documentElement.dir === 'rtl' || document.body.dir === 'rtl';
+      const multiplier = isRTL ? -1 : 1;
+      scrollRef.current.scrollBy({
+        left: scrollAmount * dir * multiplier,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
@@ -140,33 +155,56 @@ export const Testimonials = () => {
         </motion.div>
 
         {/* ── Thumbnail Strip ── */}
-        <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-9 gap-2 lg:gap-3 mb-8">
-          {videos.map((v, i) => (
-            <motion.div
-              key={v.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.04 }}
-              onClick={() => setActiveIndex(i)}
-              className={`relative rounded-xl overflow-hidden cursor-pointer transition-all duration-300 aspect-square ${i === activeIndex
-                  ? 'ring-2 ring-go-orange ring-offset-2 scale-105 shadow-glow'
-                  : 'opacity-60 hover:opacity-100 hover:scale-105'
+        <div className="relative flex items-center group/strip mb-8">
+          {/* Scroll Left Button */}
+          <button
+            onClick={() => scroll('left')}
+            className="absolute left-2 z-10 w-10 h-10 bg-white/90 hover:bg-white text-go-black rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none group-hover/strip:opacity-100 group-hover/strip:pointer-events-auto transition-all duration-300"
+          >
+            <ChevronLeft size={20} />
+          </button>
+
+          {/* Thumbnails Container */}
+          <div
+            ref={scrollRef}
+            className="w-full flex gap-3 overflow-x-auto scroll-smooth no-scrollbar py-2 px-1"
+          >
+            {videos.map((v, i) => (
+              <motion.div
+                key={v.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.04 }}
+                onClick={() => setActiveIndex(i)}
+                className={`relative rounded-xl overflow-hidden cursor-pointer transition-all duration-300 aspect-square w-24 md:w-28 shrink-0 ${
+                  i === activeIndex
+                    ? 'ring-2 ring-go-orange ring-offset-2 scale-105 shadow-glow'
+                    : 'opacity-60 hover:opacity-100 hover:scale-105'
                 }`}
-            >
-              <img
-                src={driveThumbnail(v.id, 300)}
-                alt={`Testimonial ${i + 1}`}
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-7 h-7 bg-white/80 backdrop-blur-sm text-go-orange rounded-full flex items-center justify-center">
-                  <Play size={12} fill="currentColor" className="ml-0.5" />
+              >
+                <img
+                  src={driveThumbnail(v.id, 300)}
+                  alt={`Testimonial ${i + 1}`}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-7 h-7 bg-white/80 backdrop-blur-sm text-go-orange rounded-full flex items-center justify-center">
+                    <Play size={12} fill="currentColor" className="ml-0.5" />
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Scroll Right Button */}
+          <button
+            onClick={() => scroll('right')}
+            className="absolute right-2 z-10 w-10 h-10 bg-white/90 hover:bg-white text-go-black rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none group-hover/strip:opacity-100 group-hover/strip:pointer-events-auto transition-all duration-300"
+          >
+            <ChevronRight size={20} />
+          </button>
         </div>
 
       </div>
