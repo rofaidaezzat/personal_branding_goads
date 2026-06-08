@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Play, ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const videos = [
-  { id: '1MpKpoXdYeavJja_btimcHwjGF_Oo5g29' },
-  { id: '1u0Xh0PXnSobD3L4qTGdO7YDzeThU7xrx' },
+  { id: '16TxvRY5SznVxN5Lw-XaoXEvl031Dh3mf' },
+  { id: '18YwT4cAShV6Ol2dcpw3Rreh8EYR9Urb1' },
   { id: '1bruoDPwP_Q9VFifKOCHkC9EeiArMT9Ra' },
   { id: '1vzjtEA8ajiyq6dfD7jNvNvYoh-WsRQ8P' },
   { id: '1XvK58V8wL471v49U0prI94tTLfccHzPa' },
