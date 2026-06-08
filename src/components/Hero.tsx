@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from './Shared';
 import { TrendingUp, Users, Play } from 'lucide-react';
+import heroThumbnail from '../assets/hero-thumbnail.jpg';
 export const Hero = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const { scrollY } = useScroll();
@@ -107,7 +108,7 @@ export const Hero = () => {
                   onClick={() => setIsPlaying(true)}
                 >
                   <img
-                    src="https://lh3.googleusercontent.com/d/1Q8ReLRSMEyytGX7hIBSaoLRQ_5Dc440z=w1000"
+                    src={heroThumbnail}
                     alt="Professional Business Owner"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"
                   />

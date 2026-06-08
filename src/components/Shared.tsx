@@ -80,50 +80,52 @@ export const Navbar = () => {
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/80 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'}`}>
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/80 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'}`}>
 
-      <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center gap-2">
-          <img src={logoImg} alt="GO ADS" className="h-10 w-auto object-contain" />
-        </div>
+        <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center gap-2">
+            <img src={logoImg} alt="GO ADS" className="h-10 w-auto object-contain" />
+          </div>
 
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {navLinks.map((link) =>
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-gray-600 hover:text-go-orange font-semibold transition-colors text-sm"
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) =>
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-gray-600 hover:text-go-orange font-semibold transition-colors text-sm"
+              >
+                {link.name}
+              </a>
+            )}
+          </nav>
+
+          {/* Actions */}
+          <div className="hidden lg:flex items-center gap-4">
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-1 text-gray-600 hover:text-go-black font-semibold text-sm transition-colors"
             >
-              {link.name}
-            </a>
-          )}
-        </nav>
+              <Globe size={16} />
+              <span>{isRtl ? 'EN' : 'العربية'}</span>
+            </button>
+            <Button onClick={handleContactClick} className="text-sm px-5 py-2.5">
+              احجز اجتماع مجاني
+            </Button>
+          </div>
 
-        {/* Actions */}
-        <div className="hidden lg:flex items-center gap-4">
+          {/* Mobile Toggle */}
           <button
-            onClick={toggleLanguage}
-            className="flex items-center gap-1 text-gray-600 hover:text-go-black font-semibold text-sm transition-colors"
+            className="lg:hidden text-go-black"
+            onClick={() => setMobileMenuOpen(true)}
           >
-            <Globe size={16} />
-            <span>{isRtl ? 'EN' : 'العربية'}</span>
+            <Menu size={28} />
           </button>
-          <Button onClick={handleContactClick} className="text-sm px-5 py-2.5">
-            احجز اجتماع مجاني
-          </Button>
         </div>
-
-        {/* Mobile Toggle */}
-        <button
-          className="lg:hidden text-go-black"
-          onClick={() => setMobileMenuOpen(true)}
-        >
-          <Menu size={28} />
-        </button>
-      </div>
+      </header>
 
       {/* Mobile Menu */}
       <AnimatePresence>
@@ -133,7 +135,7 @@ export const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: isRtl ? '100%' : '-100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 bg-white z-50 flex flex-col p-6"
+            className="fixed inset-0 bg-white z-[90] flex flex-col p-6 overflow-y-auto"
           >
             <div className="flex justify-between items-center mb-12">
               <img src={logoImg} alt="GO ADS" className="h-10 w-auto object-contain" />
@@ -179,7 +181,7 @@ export const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 
 };
