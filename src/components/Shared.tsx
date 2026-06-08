@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Globe } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import logoImg from '../assets/photo_2026-04-16_15-55-16-removebg-preview.png';
 export const Button = ({
   children,
   variant = 'primary',
@@ -85,9 +86,7 @@ export const Navbar = () => {
       <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <span className="text-2xl font-black tracking-tighter text-go-black">
-            GO<span className="text-go-orange">ADS</span>
-          </span>
+          <img src={logoImg} alt="GO ADS" className="h-10 w-auto object-contain" />
         </div>
 
         {/* Desktop Nav */}
@@ -137,9 +136,7 @@ export const Navbar = () => {
             className="fixed inset-0 bg-white z-50 flex flex-col p-6"
           >
             <div className="flex justify-between items-center mb-12">
-              <span className="text-2xl font-black tracking-tighter text-go-black">
-                GO<span className="text-go-orange">ADS</span>
-              </span>
+              <img src={logoImg} alt="GO ADS" className="h-10 w-auto object-contain" />
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-2 bg-gray-100 rounded-full text-gray-600"
