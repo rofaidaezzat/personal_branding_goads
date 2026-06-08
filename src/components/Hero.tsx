@@ -39,7 +39,7 @@ export const Hero = () => {
                 ease: 'easeOut'
               }}>
 
-              <h1 className="text-5xl md:text-6xl lg:text-[70px] font-black leading-[1.1] tracking-tight mb-6 text-go-black">
+              <h1 className="text-5xl md:text-6xl lg:text-[70px] font-black leading-[1.2] mb-6 text-go-black">
                 مش محتاج تظهر أكتر بس… <br />
                 <span className="relative inline-block mt-2">
                   <span className="relative z-10">محتاج تظهر صح</span>

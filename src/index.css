@@ -36,3 +36,27 @@ html, body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Prevent tracking/letter-spacing from breaking cursive Arabic connection on all screens */
+[dir="rtl"], [dir="rtl"] * {
+  letter-spacing: normal !important;
+}
+
+/* Adjust heading sizes and line heights on mobile screens for better readability with Cairo font */
+@media (max-width: 768px) {
+  h1, .text-5xl, .text-6xl, .text-\[70px\], .text-\[5xl\], .text-\[6xl\] {
+    font-size: 1.875rem !important; /* 30px */
+    line-height: 1.3 !important;
+  }
+  
+  h2, .text-4xl, .text-\[32px\], .text-\[4xl\] {
+    font-size: 1.5rem !important; /* 24px */
+    line-height: 1.35 !important;
+  }
+  
+  h3, .text-3xl, .text-\[24px\], .text-\[3xl\] {
+    font-size: 1.25rem !important; /* 20px */
+    line-height: 1.4 !important;
+  }
+}
+

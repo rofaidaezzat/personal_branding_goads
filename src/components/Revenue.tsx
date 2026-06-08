@@ -231,7 +231,7 @@ export const Revenue = () => {
             {/* Right stats panel */}
             <div className="space-y-6 order-last md:order-first">
               <div>
-                <p className="text-xs font-bold text-gray-400 mb-1 uppercase tracking-wide">اقتصاد الكرياتورز</p>
+                <p className="text-xs font-bold text-gray-400 mb-1">اقتصاد الكرياتورز</p>
                 <div className="flex items-end gap-2">
                   <span className="text-3xl font-black text-go-black">$480B</span>
                   <span className="text-sm font-bold text-green-500 bg-green-50 px-2 py-1 rounded-md mb-1">+92%</span>

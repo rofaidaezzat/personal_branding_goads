@@ -63,7 +63,7 @@ export const Testimonials = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-go-orange font-black text-sm tracking-widest uppercase mb-3"
+            className="text-go-orange font-black text-sm mb-3"
           >
             آراء العملاء
           </motion.p>
