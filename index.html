@@ -15,8 +15,25 @@
       t.src=v;s=b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t,s)}(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('set', 'autoConfig', false, '1680005749790106');
       fbq('init', '1680005749790106');
       fbq('track', 'PageView');
+
+      // Track clicks on "احجز اجتماع مجاني" as a custom event instead of AddToCart
+      document.addEventListener('click', function(e) {
+        var target = e.target;
+        while (target && target !== document.body) {
+          if (target.textContent && (
+            target.textContent.indexOf('احجز اجتماع مجاني') !== -1 || 
+            target.textContent.indexOf('احجز الاجتماع المجاني') !== -1 ||
+            target.textContent.indexOf('احجز اجتماعك المجاني') !== -1
+          )) {
+            fbq('trackCustom', 'احجز اجتماع مجاني');
+            break;
+          }
+          target = target.parentElement;
+        }
+      });
     </script>
     <!-- End Meta Pixel Code -->
   </head>

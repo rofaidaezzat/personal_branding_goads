@@ -254,6 +254,10 @@ export const Contactus = () => {
 
         if (response.ok) {
           setSubmitStatus('success');
+          if (typeof window !== 'undefined' && (window as any).fbq) {
+            (window as any).fbq('track', 'Lead');
+            (window as any).fbq('trackCustom', 'احجز اجتماع مجاني');
+          }
           setFormData({ 
             name: '', 
             phone: '', 
