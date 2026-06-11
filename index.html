@@ -18,16 +18,21 @@
       fbq('set', 'autoConfig', false, '1680005749790106');
       fbq('init', '1680005749790106');
       fbq('track', 'PageView');
+      fbq('track', 'ViewContent');
 
-      // Track clicks on "احجز اجتماع مجاني" as a custom event instead of AddToCart
+      // Track clicks on CTA buttons (e.g. "احجز اجتماع مجاني" or "Book a Free Meeting") as 'CTA' custom event
       document.addEventListener('click', function(e) {
         var target = e.target;
         while (target && target !== document.body) {
           if (target.textContent && (
             target.textContent.indexOf('احجز اجتماع مجاني') !== -1 || 
             target.textContent.indexOf('احجز الاجتماع المجاني') !== -1 ||
-            target.textContent.indexOf('احجز اجتماعك المجاني') !== -1
+            target.textContent.indexOf('احجز اجتماعك المجاني') !== -1 ||
+            target.textContent.toLowerCase().indexOf('book a free meeting') !== -1 ||
+            target.textContent.toLowerCase().indexOf('book a meeting') !== -1 ||
+            target.textContent.toLowerCase().indexOf('book free meeting') !== -1
           )) {
+            fbq('trackCustom', 'CTA');
             fbq('trackCustom', 'احجز اجتماع مجاني');
             break;
           }
