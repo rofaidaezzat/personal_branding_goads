@@ -78,22 +78,37 @@ export const Contactus = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+  const validateName = (name: string): string | undefined => {
+    if (!name.trim()) {
+      return i18n.language === 'ar' ? 'الاسم مطلوب' : 'Name is required';
+    } else if (name.trim().length < 2) {
+      return i18n.language === 'ar' ? 'الاسم يجب أن يكون حرفين على الأقل' : 'Name must be at least 2 characters';
+    } else if (!/^[\p{L}\s\-']+$/u.test(name.trim())) {
+      return i18n.language === 'ar' ? 'الاسم يجب أن يحتوي على حروف فقط' : 'Name must contain letters only';
+    }
+    return undefined;
+  };
+
+  const validatePhone = (phone: string): string | undefined => {
+    if (!phone.trim()) {
+      return i18n.language === 'ar' ? 'رقم الهاتف مطلوب' : 'Phone number is required';
+    } else if (!/^\d+$/.test(phone.trim())) {
+      return i18n.language === 'ar' ? 'رقم الهاتف يجب أن يحتوي على أرقام فقط' : 'Phone number must contain digits only';
+    } else if (phone.trim().length < 8 || phone.trim().length > 15) {
+      return i18n.language === 'ar' ? 'رقم الهاتف يجب أن يكون بين 8 و 15 رقماً' : 'Phone number must be between 8 and 15 digits';
+    }
+    return undefined;
+  };
+
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
     let isValid = true;
 
-    if (!formData.name.trim()) {
-      newErrors.name = i18n.language === 'ar' ? 'الاسم مطلوب' : 'Name is required';
-      isValid = false;
-    } else if (formData.name.length < 2) {
-      newErrors.name = i18n.language === 'ar' ? 'الاسم يجب أن يكون حرفين على الأقل' : 'Name must be at least 2 characters';
-      isValid = false;
-    }
+    const nameError = validateName(formData.name);
+    if (nameError) { newErrors.name = nameError; isValid = false; }
 
-    if (!formData.phone.trim()) {
-      newErrors.phone = i18n.language === 'ar' ? 'رقم الهاتف مطلوب' : 'Phone number is required';
-      isValid = false;
-    }
+    const phoneError = validatePhone(formData.phone);
+    if (phoneError) { newErrors.phone = phoneError; isValid = false; }
 
     if (!formData.service || formData.service === 'Choose service') {
       newErrors.service = i18n.language === 'ar' ? 'يرجى اختيار الخدمة' : 'Please select a service';
@@ -449,8 +464,9 @@ export const Contactus = () => {
                     value={formData.name}
                     onChange={(e) => {
                       setFormData({ ...formData, name: e.target.value });
-                      if (errors.name) setErrors({ ...errors, name: undefined });
+                      if (errors.name) setErrors({ ...errors, name: validateName(e.target.value) });
                     }}
+                    onBlur={(e) => setErrors({ ...errors, name: validateName(e.target.value) })}
                     className={`h-[48px] w-full rounded-xl border outline-none px-4 text-[14px] transition-all bg-gray-50 focus:bg-white ${errors.name ? 'border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500' : 'border-[#EEEEEE] focus:border-[#F1592A] focus:ring-1 focus:ring-[#F1592A]'}`}
                   />
                   {errors.name && <span className="text-red-500 text-xs font-medium">{errors.name}</span>}
@@ -479,10 +495,14 @@ export const Contactus = () => {
                     <input
                       type="tel"
                       value={formData.phone}
+                      inputMode="numeric"
                       onChange={(e) => {
-                        setFormData({ ...formData, phone: e.target.value });
-                        if (errors.phone) setErrors({ ...errors, phone: undefined });
+                        // Only allow digit characters
+                        const digitsOnly = e.target.value.replace(/\D/g, '');
+                        setFormData({ ...formData, phone: digitsOnly });
+                        if (errors.phone) setErrors({ ...errors, phone: validatePhone(digitsOnly) });
                       }}
+                      onBlur={(e) => setErrors({ ...errors, phone: validatePhone(e.target.value) })}
                       className={`flex-1 h-full rounded-xl border outline-none px-4 text-[14px] transition-all bg-gray-50 focus:bg-white text-left ${errors.phone ? 'border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500' : 'border-[#EEEEEE] focus:border-[#F1592A] focus:ring-1 focus:ring-[#F1592A]'}`}
                       dir="ltr"
                     />
