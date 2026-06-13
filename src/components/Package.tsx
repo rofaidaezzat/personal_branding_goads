@@ -1,12 +1,13 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, Gift, Camera, Video, Layout, Target, Search } from 'lucide-react';
 import { Button } from './Shared';
-export const Package = ({
-  onOpenPopup
-
-
-}: {onOpenPopup: () => void;}) => {
+export const Package = () => {
+  const handleScrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   const features = [{
     icon: <Search size={18} />,
     text: 'SWOT Analysis ليك ولبراندك'
@@ -184,7 +185,7 @@ export const Package = ({
                 </div>
               </div>
 
-              <Button onClick={onOpenPopup} className="w-full py-4 text-lg shadow-lg shadow-go-orange/20">
+              <Button onClick={handleScrollToContact} className="w-full py-4 text-lg shadow-lg shadow-go-orange/20">
                 احجز اجتماع مجاني
               </Button>
             </div>

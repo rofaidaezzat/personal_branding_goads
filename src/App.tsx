@@ -35,7 +35,7 @@ export function App() {
       <Audience />
       <Solution />
       <SuccessStories />
-      <Package onOpenPopup={() => setIsPopupOpen(true)} />
+      <Package />
       <Differentiation />
       <Process />
       <Testimonials />

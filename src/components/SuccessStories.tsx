@@ -153,11 +153,6 @@ export const SuccessStories = () => {
                 </div>
               </div>
             )}
-
-            {/* Badges */}
-            <div className="absolute top-4 right-4 bg-go-orange text-white text-xs font-bold px-3 py-1.5 rounded-full">
-              {story.brief}
-            </div>
           </div>
 
           {/* Content Area */}
@@ -233,10 +228,10 @@ export const SuccessStories = () => {
               </button>
 
               {/* Video Player */}
-              <div className="aspect-video w-full">
+              <div className="aspect-video w-full relative overflow-hidden">
                 <iframe
                   src={`https://drive.google.com/file/d/${activeVideoId}/preview?autoplay=1`}
-                  className="w-full h-full border-0"
+                  className="absolute -top-[50px] left-0 w-full h-[calc(100%+50px)] border-0"
                   allow="autoplay; encrypted-media"
                   allowFullScreen
                   title="Success Story Video"

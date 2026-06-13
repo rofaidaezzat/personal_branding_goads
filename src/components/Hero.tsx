@@ -97,7 +97,7 @@ export const Hero = () => {
               {isPlaying ? (
                 <iframe
                   src="https://drive.google.com/file/d/1Q8ReLRSMEyytGX7hIBSaoLRQ_5Dc440z/preview?autoplay=1"
-                  className="w-full h-full border-0"
+                  className="absolute -top-[50px] left-0 w-full h-[calc(100%+50px)] border-0"
                   allow="autoplay; encrypted-media"
                   allowFullScreen
                   title="Hero Video"

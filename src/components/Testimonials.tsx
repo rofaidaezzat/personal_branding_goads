@@ -262,12 +262,12 @@ export const Testimonials = () => {
                 </button>
 
                 {/* Video iframe */}
-                <div className="aspect-video w-full">
+                <div className="aspect-video w-full relative overflow-hidden">
                   <iframe
                     ref={iframeRef}
                     key={lightboxIndex}
                     src={driveEmbed(videos[lightboxIndex].id)}
-                    className="w-full h-full"
+                    className="absolute -top-[50px] left-0 w-full h-[calc(100%+50px)] border-0"
                     allow="autoplay; encrypted-media"
                     allowFullScreen
                     title={`Testimonial ${lightboxIndex + 1}`}
