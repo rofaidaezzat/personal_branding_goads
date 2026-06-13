@@ -197,7 +197,7 @@ export const Contactus = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (validateForm()) {
       setIsSubmitting(true);
 
@@ -273,10 +273,10 @@ export const Contactus = () => {
             (window as any).fbq('track', 'Lead');
             (window as any).fbq('trackCustom', 'احجز اجتماع مجاني');
           }
-          setFormData({ 
-            name: '', 
-            phone: '', 
-            countryCode: '+20', 
+          setFormData({
+            name: '',
+            phone: '',
+            countryCode: '+20',
             userType: 'An Individual',
             service: 'General Inquiry',
             message: '',
@@ -401,35 +401,6 @@ export const Contactus = () => {
             onSubmit={handleSubmit}
             className="flex flex-col w-full gap-[20px]"
           >
-            {/* Service Interest */}
-            <div className="flex flex-col gap-[8px]">
-              <label className="text-[14px] text-[#555555] font-semibold">
-                {t('contactus_page.form.labels.service')}<span className="text-[#F1592A]">*</span>
-              </label>
-              <div className="relative h-[48px] w-full">
-                <select 
-                  value={formData.service}
-                  onChange={(e) => {
-                    setFormData({ ...formData, service: e.target.value });
-                    if (errors.service) setErrors({ ...errors, service: undefined });
-                  }}
-                  className={`h-full w-full rounded-xl border outline-none pl-4 pr-10 text-[14px] text-[#555555] appearance-none bg-transparent transition-all cursor-pointer ${errors.service ? 'border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500' : 'border-[#EEEEEE] focus:border-[#F1592A] focus:ring-1 focus:ring-[#F1592A]'}`}
-                >
-                  <option value="">{t('contactus_page.form.services.choose')}</option>
-                  <option value="General Inquiry">{t('contactus_page.form.services.general')}</option>
-                  <option value="web_design">{t('contactus_page.form.services.web')}</option>
-                  <option value="media_production">{t('contactus_page.form.services.media')}</option>
-                  <option value="social_media">{t('contactus_page.form.services.social')}</option>
-                  <option value="advertising">{t('contactus_page.form.services.ads')}</option>
-                  <option value="design">{t('contactus_page.form.services.design')}</option>
-                  <option value="consultation">{t('contactus_page.form.services.consultation')}</option>
-                </select>
-                <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none ${isRtl ? 'left-4' : 'right-4'}`}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6"/></svg>
-                </div>
-              </div>
-              {errors.service && <span className="text-red-500 text-xs font-medium">{errors.service}</span>}
-            </div>
 
             {formData.service && (
               <>
@@ -438,13 +409,13 @@ export const Contactus = () => {
                   <div className="flex flex-col gap-[8px]">
                     <label className="text-[14px] text-[#555555] font-semibold">{t('contactus_page.form.labels.iam')}</label>
                     <div className="flex items-center w-full h-[44px] rounded-xl border border-[#EEEEEE] p-1 bg-gray-50">
-                      <button 
+                      <button
                         type="button"
                         onClick={() => setFormData({ ...formData, userType: 'An Individual' })}
                         className={`flex-1 h-full rounded-lg text-[13px] font-bold transition-all ${formData.userType === 'An Individual' ? 'bg-[#FFF0EC] text-[#F1592A] shadow-sm' : 'bg-transparent text-[#888888] hover:text-[#141414]'}`}>
                         {t('contactus_page.form.user_types.individual')}
                       </button>
-                      <button 
+                      <button
                         type="button"
                         onClick={() => setFormData({ ...formData, userType: 'A company' })}
                         className={`flex-1 h-full rounded-lg text-[13px] font-bold transition-all ${formData.userType === 'A company' ? 'bg-[#FFF0EC] text-[#F1592A] shadow-sm' : 'bg-transparent text-[#888888] hover:text-[#141414]'}`}>
@@ -479,7 +450,7 @@ export const Contactus = () => {
                   </label>
                   <div className="flex gap-2 h-[48px]">
                     <div className="relative w-[110px] h-full flex-shrink-0">
-                      <select 
+                      <select
                         value={formData.countryCode}
                         onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
                         className="h-full w-full rounded-xl border border-[#EEEEEE] outline-none pl-3 pr-8 text-[14px] text-[#555555] appearance-none bg-gray-50 focus:bg-white focus:border-[#F1592A] transition-all cursor-pointer"
@@ -489,7 +460,7 @@ export const Contactus = () => {
                         <option value="+966">KSA +966</option>
                       </select>
                       <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none ${isRtl ? 'left-3' : 'right-3'}`}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6" /></svg>
                       </div>
                     </div>
                     <input
@@ -534,7 +505,7 @@ export const Contactus = () => {
                         {t('contactus_page.form.labels.website_type')}<span className="text-[#F1592A]">*</span>
                       </label>
                       <div className="relative h-[48px] w-full">
-                        <select 
+                        <select
                           value={formData.websiteType}
                           onChange={(e) => {
                             setFormData({ ...formData, websiteType: e.target.value });
@@ -550,7 +521,7 @@ export const Contactus = () => {
                           <option value="أخرى Other">أخرى Other</option>
                         </select>
                         <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none ${isRtl ? 'left-4' : 'right-4'}`}>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6" /></svg>
                         </div>
                       </div>
                       {errors.websiteType && <span className="text-red-500 text-xs font-medium">{errors.websiteType}</span>}
@@ -562,7 +533,7 @@ export const Contactus = () => {
                         {t('contactus_page.form.labels.pages_count')}<span className="text-[#F1592A]">*</span>
                       </label>
                       <div className="relative h-[48px] w-full">
-                        <select 
+                        <select
                           value={formData.pagesCount}
                           onChange={(e) => {
                             setFormData({ ...formData, pagesCount: e.target.value });
@@ -577,7 +548,7 @@ export const Contactus = () => {
                           <option value="أكثر من 10 صفحات">أكثر من 10 صفحات</option>
                         </select>
                         <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none ${isRtl ? 'left-4' : 'right-4'}`}>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6" /></svg>
                         </div>
                       </div>
                       {errors.pagesCount && <span className="text-red-500 text-xs font-medium">{errors.pagesCount}</span>}
@@ -589,7 +560,7 @@ export const Contactus = () => {
                         {t('contactus_page.form.labels.budget')}<span className="text-[#F1592A]">*</span>
                       </label>
                       <div className="relative h-[48px] w-full">
-                        <select 
+                        <select
                           value={formData.budget}
                           onChange={(e) => {
                             setFormData({ ...formData, budget: e.target.value });
@@ -604,7 +575,7 @@ export const Contactus = () => {
                           <option value="أكثر من 50,000 جنيه">أكثر من 50,000 جنيه</option>
                         </select>
                         <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none ${isRtl ? 'left-4' : 'right-4'}`}>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6" /></svg>
                         </div>
                       </div>
                       {errors.budget && <span className="text-red-500 text-xs font-medium">{errors.budget}</span>}
@@ -623,7 +594,7 @@ export const Contactus = () => {
                           'كتابة محتوى'
                         ].map((serviceOption) => (
                           <label key={serviceOption} className="flex items-center gap-2 cursor-pointer select-none">
-                            <input 
+                            <input
                               type="checkbox"
                               checked={formData.additionalServices.includes(serviceOption)}
                               onChange={(e) => {
@@ -649,7 +620,7 @@ export const Contactus = () => {
                         {t('contactus_page.form.labels.business_type')}<span className="text-[#F1592A]">*</span>
                       </label>
                       <div className="relative h-[48px] w-full">
-                        <select 
+                        <select
                           value={formData.businessType}
                           onChange={(e) => {
                             setFormData({ ...formData, businessType: e.target.value });
@@ -664,7 +635,7 @@ export const Contactus = () => {
                           <option value="أخرى Other">أخرى Other</option>
                         </select>
                         <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none ${isRtl ? 'left-4' : 'right-4'}`}>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6" /></svg>
                         </div>
                       </div>
                       {errors.businessType && <span className="text-red-500 text-xs font-medium">{errors.businessType}</span>}
@@ -676,7 +647,7 @@ export const Contactus = () => {
                         {t('contactus_page.form.labels.videos_count')}<span className="text-[#F1592A]">*</span>
                       </label>
                       <div className="relative h-[48px] w-full">
-                        <select 
+                        <select
                           value={formData.videosCount}
                           onChange={(e) => {
                             setFormData({ ...formData, videosCount: e.target.value });
@@ -690,7 +661,7 @@ export const Contactus = () => {
                           <option value="أكثر من 5 فيديوهات">أكثر من 5 فيديوهات</option>
                         </select>
                         <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none ${isRtl ? 'left-4' : 'right-4'}`}>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6" /></svg>
                         </div>
                       </div>
                       {errors.videosCount && <span className="text-red-500 text-xs font-medium">{errors.videosCount}</span>}
@@ -721,7 +692,7 @@ export const Contactus = () => {
                         {t('contactus_page.form.labels.activity_type')}<span className="text-[#F1592A]">*</span>
                       </label>
                       <div className="relative h-[48px] w-full">
-                        <select 
+                        <select
                           value={formData.activityType}
                           onChange={(e) => {
                             setFormData({ ...formData, activityType: e.target.value });
@@ -736,7 +707,7 @@ export const Contactus = () => {
                           <option value="أخرى Other">أخرى Other</option>
                         </select>
                         <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none ${isRtl ? 'left-4' : 'right-4'}`}>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6" /></svg>
                         </div>
                       </div>
                       {errors.activityType && <span className="text-red-500 text-xs font-medium">{errors.activityType}</span>}
@@ -757,7 +728,7 @@ export const Contactus = () => {
                           'LinkedIn'
                         ].map((platformOption) => (
                           <label key={platformOption} className="flex items-center gap-2 cursor-pointer select-none">
-                            <input 
+                            <input
                               type="checkbox"
                               checked={formData.platforms.includes(platformOption)}
                               onChange={(e) => {
@@ -780,7 +751,7 @@ export const Contactus = () => {
                     <div className="flex flex-col gap-[8px]">
                       <label className="text-[14px] text-[#555555] font-semibold">{t('contactus_page.form.labels.business_type')}<span className="text-[#F1592A]">*</span></label>
                       <div className="relative h-[48px] w-full">
-                        <select 
+                        <select
                           value={formData.businessType}
                           onChange={(e) => {
                             setFormData({ ...formData, businessType: e.target.value });
@@ -795,7 +766,7 @@ export const Contactus = () => {
                           <option value="أخرى Other">أخرى Other</option>
                         </select>
                         <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none ${isRtl ? 'left-4' : 'right-4'}`}>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6" /></svg>
                         </div>
                       </div>
                       {errors.businessType && <span className="text-red-500 text-xs font-medium">{errors.businessType}</span>}
@@ -804,7 +775,7 @@ export const Contactus = () => {
                     <div className="flex flex-col gap-[8px]">
                       <label className="text-[14px] text-[#555555] font-semibold">{t('contactus_page.form.labels.marketing_budget')}<span className="text-[#F1592A]">*</span></label>
                       <div className="relative h-[48px] w-full">
-                        <select 
+                        <select
                           value={formData.marketingBudget}
                           onChange={(e) => {
                             setFormData({ ...formData, marketingBudget: e.target.value });
@@ -818,7 +789,7 @@ export const Contactus = () => {
                           <option value="أكثر من 10000 جنيه">أكثر من 10000 جنيه</option>
                         </select>
                         <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none ${isRtl ? 'left-4' : 'right-4'}`}>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6" /></svg>
                         </div>
                       </div>
                       {errors.marketingBudget && <span className="text-red-500 text-xs font-medium">{errors.marketingBudget}</span>}
@@ -853,7 +824,7 @@ export const Contactus = () => {
                     <div className="flex flex-col gap-[8px]">
                       <label className="text-[14px] text-[#555555] font-semibold">{t('contactus_page.form.labels.design_type')}<span className="text-[#F1592A]">*</span></label>
                       <div className="relative h-[48px] w-full">
-                        <select 
+                        <select
                           value={formData.designType}
                           onChange={(e) => {
                             setFormData({ ...formData, designType: e.target.value });
@@ -868,7 +839,7 @@ export const Contactus = () => {
                           <option value="أخرى Other">أخرى Other</option>
                         </select>
                         <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none ${isRtl ? 'left-4' : 'right-4'}`}>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6" /></svg>
                         </div>
                       </div>
                       {errors.designType && <span className="text-red-500 text-xs font-medium">{errors.designType}</span>}
@@ -877,7 +848,7 @@ export const Contactus = () => {
                     <div className="flex flex-col gap-[8px]">
                       <label className="text-[14px] text-[#555555] font-semibold">{t('contactus_page.form.labels.designs_count')}<span className="text-[#F1592A]">*</span></label>
                       <div className="relative h-[48px] w-full">
-                        <select 
+                        <select
                           value={formData.designsCount}
                           onChange={(e) => {
                             setFormData({ ...formData, designsCount: e.target.value });
@@ -891,7 +862,7 @@ export const Contactus = () => {
                           <option value="أكثر من 5 تصميمات">أكثر من 5 تصميمات</option>
                         </select>
                         <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none ${isRtl ? 'left-4' : 'right-4'}`}>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6" /></svg>
                         </div>
                       </div>
                       {errors.designsCount && <span className="text-red-500 text-xs font-medium">{errors.designsCount}</span>}
@@ -900,7 +871,7 @@ export const Contactus = () => {
                     <div className="flex flex-col gap-[8px]">
                       <label className="text-[14px] text-[#555555] font-semibold">{t('contactus_page.form.labels.hasVisualIdentity')}<span className="text-[#F1592A]">*</span></label>
                       <div className="relative h-[48px] w-full">
-                        <select 
+                        <select
                           value={formData.hasVisualIdentity}
                           onChange={(e) => {
                             setFormData({ ...formData, hasVisualIdentity: e.target.value });
@@ -913,7 +884,7 @@ export const Contactus = () => {
                           <option value="لا">لا</option>
                         </select>
                         <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none ${isRtl ? 'left-4' : 'right-4'}`}>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#555555]"><path d="M6 9l6 6 6-6" /></svg>
                         </div>
                       </div>
                       {errors.hasVisualIdentity && <span className="text-red-500 text-xs font-medium">{errors.hasVisualIdentity}</span>}
