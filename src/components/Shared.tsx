@@ -87,7 +87,16 @@ export const Navbar = () => {
         <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <img src={logoImg} alt="GO ADS" className="h-10 w-auto object-contain" />
+            <a
+              href="#hero"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="cursor-pointer"
+            >
+              <img src={logoImg} alt="GO ADS" className="h-10 w-auto object-contain" />
+            </a>
           </div>
 
           {/* Desktop Nav */}
