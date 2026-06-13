@@ -47,10 +47,6 @@ export const Navbar = () => {
 
   const navLinks = [
     {
-      name: t('navbar.links.service'),
-      href: '#service'
-    },
-    {
       name: t('navbar.links.story'),
       href: '#story'
     },
