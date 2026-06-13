@@ -2,37 +2,17 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, HelpCircle, MessageCircle } from 'lucide-react';
 import { Button } from './Shared';
+import { useTranslation } from 'react-i18next';
+
 export const FAQ = ({
   onOpenPopup
 
 
 }: {onOpenPopup: () => void;}) => {
+  const { t } = useTranslation();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const faqs = [{
-    q: 'يعني إيه Personal Branding؟',
-    a: 'هو الطريقة اللي الناس بتشوفك وتثق فيك من خلالها. بنساعدك توضح أنت مين، بتقدم إيه، وليه الناس تختارك.'
-  }, {
-    q: 'هل الخدمة للدكاترة بس؟',
-    a: 'لا. الخدمة مناسبة لأي شخص عنده خدمة، خبرة، أو بيزنس وعايز يكبر. زي الدكاترة، المحامين، الكوتشز، الاستشاريين، أصحاب الشركات، والفريلانسرز.'
-  }, {
-    q: 'هل لازم يكون عندي جمهور كبير؟',
-    a: 'لا. إحنا بنبدأ من المرحلة اللي أنت فيها، سواء عندك جمهور صغير أو محتاج تبني وجودك من البداية.'
-  }, {
-    q: 'إزاي البراند الشخصي بيزود الإيرادات؟',
-    a: 'لما الناس تشوفك بشكل واضح ومتكرر، وتفهم قيمتك، وتثق فيك، فرص إنهم يتواصلوا ويحجزوا أو يشتروا بتزيد.'
-  }, {
-    q: 'الباكدج بتشمل إيه؟',
-    a: 'SWOT analysis، تحليل منافسين، استراتيجية براند شخصية، جلسة تصوير، 4 ريلز، 10 تصميمات شهريًا، وتوجيه يساعدك تكمل نموك.'
-  }, {
-    q: 'السعر كام؟',
-    a: 'الباكدج بتبدأ من 6000 جنيه بدل 12000 جنيه.'
-  }, {
-    q: 'هل هتعلّموني أكمّل لوحدي؟',
-    a: 'آه. جزء من القيمة اللي بنقدمها إننا نشرح لك فلسفة البراند الشخصي المناسبة ليك، عشان تقدر تكمل رحلتك سواء جددت معانا أو لا.'
-  }, {
-    q: 'إيه أول خطوة؟',
-    a: 'اضغط على “احجز اجتماع مجاني”، املأ الفورم، وفريق GO ADS هيتواصل معاك.'
-  }];
+  const faqs = t('faq.questions', { returnObjects: true }) as Array<{ q: string, a: string }> || [];
+
   return <section id="faq" className="py-24 bg-white">
       <div className="container mx-auto px-4 md:px-8">
         <div className="grid lg:grid-cols-12 gap-12 items-start">
@@ -51,11 +31,10 @@ export const FAQ = ({
                 <HelpCircle size={24} />
               </div>
               <h2 className="text-3xl md:text-4xl font-black mb-4">
-                الأسئلة الشائعة
+                {t('faq.title')}
               </h2>
               <p className="text-gray-600 font-medium leading-relaxed mb-8">
-                جمعنا لك أكتر الأسئلة اللي بتوصلنا عشان نوضح لك كل التفاصيل
-                الخاصة بخدمة بناء البراند الشخصي.
+                {t('faq.desc')}
               </p>
 
               {/* Support Card */}
@@ -66,15 +45,15 @@ export const FAQ = ({
                   </div>
                   <div>
                     <h4 className="font-black text-go-black">
-                      عندك سؤال تاني؟
+                      {t('faq.support.title')}
                     </h4>
                     <p className="text-sm text-gray-500 font-bold">
-                      إحنا هنا عشان نساعدك
+                      {t('faq.support.desc')}
                     </p>
                   </div>
                 </div>
                 <Button onClick={onOpenPopup} variant="outline" className="w-full">
-                  تواصل معانا
+                  {t('faq.support.cta')}
                 </Button>
               </div>
             </motion.div>

@@ -1,25 +1,27 @@
 import React, { cloneElement } from 'react';
 import { motion } from 'framer-motion';
 import { Target, EyeOff, TrendingDown, MessageSquareX, Clock, ShieldAlert } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 export const Problem = () => {
+  const { t } = useTranslation();
   const painPoints = [{
     icon: <Target />,
-    text: 'عندك خدمة قوية لكن مش بتوصل للجمهور المناسب'
+    text: t('problem.pain_points.point1')
   }, {
     icon: <TrendingDown />,
-    text: 'محتواك مش بيجيب استفسارات أو مبيعات كفاية'
+    text: t('problem.pain_points.point2')
   }, {
     icon: <EyeOff />,
-    text: 'المنافسين ظاهرين بشكل أقوى منك'
+    text: t('problem.pain_points.point3')
   }, {
     icon: <MessageSquareX />,
-    text: 'مش عارف تقول إيه أو تظهر إزاي'
+    text: t('problem.pain_points.point4')
   }, {
     icon: <Clock />,
-    text: 'معندكش وقت للتخطيط، التصوير، التصميم، والمتابعة'
+    text: t('problem.pain_points.point5')
   }, {
     icon: <ShieldAlert />,
-    text: 'محتاج تبني ثقة قبل ما الناس تشتري منك'
+    text: t('problem.pain_points.point6')
   }];
   return <section id="problem" className="py-24 bg-white">
       <div className="container mx-auto px-4 md:px-8">
@@ -33,8 +35,8 @@ export const Problem = () => {
         }} viewport={{
           once: true
         }} className="text-3xl md:text-4xl font-black mb-6">
-            ممكن تكون شاطر جدًا…{' '}
-            <span className="text-go-orange">بس الناس لسه مش شايفاك صح</span>
+            {t('problem.title_main')}{' '}
+            <span className="text-go-orange">{t('problem.title_sub')}</span>
           </motion.h2>
           <motion.p initial={{
           opacity: 0,
@@ -47,9 +49,7 @@ export const Problem = () => {
         }} transition={{
           delay: 0.1
         }} className="text-lg text-gray-600 font-medium leading-relaxed">
-            كتير من أصحاب الخدمات والبيزنس عندهم خبرة حقيقية، لكن وجودهم أونلاين
-            مش بيعكس قوتهم. بينزلوا محتوى عشوائي، المنافسين ظاهرين أكتر، والناس
-            مش فاهمة ليه تختارهم.
+            {t('problem.desc')}
           </motion.p>
         </div>
 

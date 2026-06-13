@@ -30,7 +30,7 @@ export const Button = ({
 
 };
 export const Navbar = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -47,27 +47,27 @@ export const Navbar = () => {
 
   const navLinks = [
     {
-      name: 'الخدمة',
+      name: t('navbar.links.service'),
       href: '#service'
     },
     {
-      name: 'القصة',
+      name: t('navbar.links.story'),
       href: '#story'
     },
     {
-      name: 'مين يستفيد؟',
+      name: t('navbar.links.audience'),
       href: '#audience'
     },
     {
-      name: 'النتائج',
+      name: t('navbar.links.results'),
       href: '#results'
     },
     {
-      name: 'الباكدج',
+      name: t('navbar.links.package'),
       href: '#package'
     },
     {
-      name: 'الأسئلة',
+      name: t('navbar.links.faq'),
       href: '#faq'
     }
   ];
@@ -113,7 +113,7 @@ export const Navbar = () => {
               <span>{isRtl ? 'EN' : 'العربية'}</span>
             </button>
             <Button onClick={handleContactClick} className="text-sm px-5 py-2.5">
-              احجز اجتماع مجاني
+              {t('navbar.cta')}
             </Button>
           </div>
 
@@ -175,7 +175,7 @@ export const Navbar = () => {
                 }}
                 className="w-full py-4 text-lg"
               >
-                احجز اجتماع مجاني
+                {t('navbar.cta')}
               </Button>
             </div>
           </motion.div>
@@ -192,6 +192,7 @@ export const PopupForm = ({
 
 
 }: { isOpen: boolean; onClose: () => void; }) => {
+  const { t } = useTranslation();
   const [type, setType] = useState<'individual' | 'company'>('individual');
   return (
     <AnimatePresence>
@@ -239,11 +240,10 @@ export const PopupForm = ({
               <div className="p-8 md:p-10">
                 <div className="mb-8 text-center">
                   <h3 className="text-2xl font-black text-go-black mb-2">
-                    احجز اجتماعك المجاني مع GO ADS
+                    {t('package.bundle_title')}
                   </h3>
                   <p className="text-gray-500 text-sm leading-relaxed">
-                    املأ البيانات وفريقنا هيتواصل معاك لمراجعة وجودك الحالي
-                    وتوضيح فرص نمو براندك الشخصي.
+                    {t('package.desc')}
                   </p>
                 </div>
 
@@ -253,18 +253,18 @@ export const PopupForm = ({
 
                   <div>
                     <label className="block text-sm font-bold text-gray-700 mb-2">
-                      الاسم
+                      {t('contactus_page.form.labels.fullname')}
                     </label>
                     <input
                       type="text"
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-go-orange focus:ring-2 focus:ring-go-orange/20 outline-none transition-all bg-gray-50 focus:bg-white"
-                      placeholder="اسمك بالكامل" />
+                      placeholder={t('contactus_page.form.labels.fullname')} />
 
                   </div>
 
                   <div>
                     <label className="block text-sm font-bold text-gray-700 mb-2">
-                      أنت فرد ولا شركة؟
+                      {t('contactus_page.form.labels.iam')}
                     </label>
                     <div className="flex p-1 bg-gray-100 rounded-xl">
                       <button
@@ -272,14 +272,14 @@ export const PopupForm = ({
                         onClick={() => setType('individual')}
                         className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${type === 'individual' ? 'bg-white text-go-black shadow-sm' : 'text-gray-500 hover:text-go-black'}`}>
 
-                        فرد
+                        {t('contactus_page.form.user_types.individual')}
                       </button>
                       <button
                         type="button"
                         onClick={() => setType('company')}
                         className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${type === 'company' ? 'bg-white text-go-black shadow-sm' : 'text-gray-500 hover:text-go-black'}`}>
 
-                        شركة
+                        {t('contactus_page.form.user_types.company')}
                       </button>
                     </div>
                   </div>
@@ -287,7 +287,7 @@ export const PopupForm = ({
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-sm font-bold text-gray-700 mb-2">
-                        رقم الموبايل / واتساب
+                        {t('contactus_page.form.labels.phone')}
                       </label>
                       <input
                         type="tel"
@@ -298,7 +298,7 @@ export const PopupForm = ({
                     </div>
                     <div>
                       <label className="block text-sm font-bold text-gray-700 mb-2">
-                        رقم إضافي (اختياري)
+                        {t('contactus_page.form.labels.additional_details')}
                       </label>
                       <input
                         type="tel"
@@ -311,16 +311,16 @@ export const PopupForm = ({
 
                   <div>
                     <label className="block text-sm font-bold text-gray-700 mb-2">
-                      تفاصيل أكتر عن نشاطك أو هدفك
+                      {t('contactus_page.form.labels.description')}
                     </label>
                     <textarea
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-go-orange focus:ring-2 focus:ring-go-orange/20 outline-none transition-all bg-gray-50 focus:bg-white resize-none h-24"
-                      placeholder="احكي لنا باختصار عن مجالك واللي حابب تحققه...">
+                      placeholder={t('contactus_page.form.placeholders.description')}>
                     </textarea>
                   </div>
 
                   <Button type="submit" className="w-full py-4 text-lg mt-2">
-                    احجز الاجتماع المجاني
+                    {t('navbar.cta')}
                   </Button>
                 </form>
               </div>

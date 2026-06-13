@@ -1,29 +1,31 @@
 import React, { cloneElement } from 'react';
 import { motion } from 'framer-motion';
 import { LayoutGrid, MessageCircle, ShieldCheck, ArrowUpRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 export const WhatIsBranding = () => {
+  const { t } = useTranslation();
   const steps = [{
     icon: <LayoutGrid />,
-    title: 'بوستات عشوائية',
-    desc: 'وجود غير منظم',
+    title: t('what_is.steps.step1_title'),
+    desc: t('what_is.steps.step1_desc'),
     color: 'text-gray-400',
     bg: 'bg-gray-100'
   }, {
     icon: <MessageCircle />,
-    title: 'رسالة واضحة',
-    desc: 'استراتيجية ومحتوى',
+    title: t('what_is.steps.step2_title'),
+    desc: t('what_is.steps.step2_desc'),
     color: 'text-blue-500',
     bg: 'bg-blue-50'
   }, {
     icon: <ShieldCheck />,
-    title: 'ثقة',
-    desc: 'الناس بتفهم قيمتك',
+    title: t('what_is.steps.step3_title'),
+    desc: t('what_is.steps.step3_desc'),
     color: 'text-green-500',
     bg: 'bg-green-50'
   }, {
     icon: <ArrowUpRight />,
-    title: 'استفسارات أكتر',
-    desc: 'نمو في الإيرادات',
+    title: t('what_is.steps.step4_title'),
+    desc: t('what_is.steps.step4_desc'),
     color: 'text-white',
     bg: 'bg-go-orange',
     isFinal: true
@@ -42,7 +44,7 @@ export const WhatIsBranding = () => {
           }} viewport={{
             once: true
           }} className="text-3xl md:text-4xl font-black mb-6">
-              يعني إيه Personal Branding؟
+              {t('what_is.title')}
             </motion.h2>
 
             <motion.div initial={{
@@ -57,16 +59,13 @@ export const WhatIsBranding = () => {
             delay: 0.1
           }} className="space-y-4 text-lg text-gray-600 font-medium leading-relaxed mb-8">
               <p>
-                البراند الشخصي ببساطة هو الصورة اللي الناس بتاخدها عنك لما تشوفك
-                أونلاين.
+                {t('what_is.desc1')}
               </p>
               <p>
-                يعني الناس تعرف أنت مين، بتقدم إيه، شاطر في إيه، وليه يثقوا فيك
-                بدل أي حد تاني.
+                {t('what_is.desc2')}
               </p>
               <p>
-                هو مش إنك تبقى مشهور وخلاص. هو إنك تبقى واضح، مقنع، وموجود في
-                دماغ العميل وقت ما يحتاج خدمتك.
+                {t('what_is.desc3')}
               </p>
             </motion.div>
 
@@ -82,7 +81,7 @@ export const WhatIsBranding = () => {
             delay: 0.2
           }} className="p-6 bg-white rounded-2xl border-l-4 border-go-orange shadow-sm">
               <p className="text-xl font-black text-go-black">
-                البراند الشخصي هو إن الناس تثق فيك قبل ما تكلمك.
+                {t('what_is.quote')}
               </p>
             </motion.div>
           </div>
@@ -151,9 +150,9 @@ export const WhatIsBranding = () => {
                     <MessageCircle fill="currentColor" size={20} />
                   </div>
                   <div>
-                    <p className="font-bold text-sm">رسالة جديدة</p>
+                    <p className="font-bold text-sm">{t('what_is.message.title')}</p>
                     <p className="text-xs text-white/80">
-                      "شفت محتواك وحابب أحجز استشارة..."
+                      {t('what_is.message.desc')}
                     </p>
                   </div>
                 </div>

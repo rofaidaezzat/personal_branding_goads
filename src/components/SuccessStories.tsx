@@ -1,99 +1,30 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, TrendingUp, Users, Eye, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+
+const getIcon = (name: string) => {
+  switch (name) {
+    case 'users': return <Users size={16} />;
+    case 'trending_up': return <TrendingUp size={16} />;
+    case 'eye': return <Eye size={16} />;
+    default: return null;
+  }
+};
+
 export const SuccessStories = () => {
+  const { t } = useTranslation();
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
-  const stories = [{
-    name: 'دكتور أحمد ناجي',
-    brief: 'استشاري نساء وتوليد',
-    profession: 'استشاري النساء والتوليد دبلومة الحقن المجهري _ بمستشفيات برمنجهام _ إنجلترا',
-    videoId: '1GYNamhjp1uo-FEQsAi6gFVLqkAA0boVb',
-    image: 'https://lh3.googleusercontent.com/d/1GYNamhjp1uo-FEQsAi6gFVLqkAA0boVb=w600',
-    before: 'كان الظهور ضعيف، المحتوى غير منتظم، والصورة العامة مش بتعكس قوة الخدمة.',
-    after: 'ظهر بشكل أوضح، المحتوى بقى احترافي، والجمهور بدأ يتفاعل ويثق أكتر.',
-    metrics: [{
-      icon: <Users size={16} />,
-      text: '+20K Followers'
-    }, {
-      icon: <TrendingUp size={16} />,
-      text: 'زيادة واضحة في الاستفسارات'
-    }]
-  }, {
-    name: 'دكتور بسمة بدير',
-    brief: 'أخصائي نساء وتوليد',
-    profession: 'اخصائي النساء والتوليد وتأخر الإنجاب وجراحة المناظير النسائية',
-    videoId: '1yL7RaWjESQFCgXc2j2wndyrx8kWl1ImU',
-    image: 'https://lh3.googleusercontent.com/d/1yL7RaWjESQFCgXc2j2wndyrx8kWl1ImU=w600',
-    before: 'الظهور غير منظم، وصعوبة في إيصال المعلومة الطبية للجمهور بشكل مبسط.',
-    after: 'فيديوهات ريلز منظمة واحترافية، زيادة الثقة والتفاعل، وتضاعف أعداد الحجوزات.',
-    metrics: [{
-      icon: <Users size={16} />,
-      text: '+35K Followers'
-    }, {
-      icon: <TrendingUp size={16} />,
-      text: 'زيادة 150% في الحجوزات'
-    }]
-  }, {
-    name: 'دكتور أحمد دياب',
-    brief: 'استشاري نساء وتوليد',
-    profession: 'استشاري جراحات النساء والتوليد وتأخر الإنجاب',
-    videoId: '1hj-qUsVzB91RMJPwuaMj7xmVs62uE-ii',
-    image: 'https://lh3.googleusercontent.com/d/1hj-qUsVzB91RMJPwuaMj7xmVs62uE-ii=w600',
-    before: 'صعوبة في إيصال المعلومات الطبية للمرضى بشكل مبسط.',
-    after: 'فيديوهات طبية تفاعلية، بناء ثقة كبيرة، وتضاعف أعداد الحجوزات.',
-    metrics: [{
-      icon: <Users size={16} />,
-      text: '+15K Followers'
-    }, {
-      icon: <TrendingUp size={16} />,
-      text: 'زيادة 120% في الحجوزات'
-    }]
-  }, {
-    name: 'المحامي حامد',
-    brief: 'محامي شركات',
-    profession: 'محامي شركات',
-    videoId: '1_e2klfyMjUV963vQv5JZWOZe30V_MUA9',
-    image: 'https://lh3.googleusercontent.com/d/1_e2klfyMjUV963vQv5JZWOZe30V_MUA9=w600',
-    before: 'محتوى قانوني معقد ومش بيوصل للعميل المستهدف.',
-    after: 'تبسيط الرسالة، بناء ثقة، واستفسارات مستمرة من شركات ناشئة.',
-    metrics: [{
-      icon: <TrendingUp size={16} />,
-      text: '3x Revenue Growth'
-    }, {
-      icon: <Eye size={16} />,
-      text: 'ريلز حققت انتشار قوي'
-    }]
-  }, {
-    name: 'ذياد ناصر',
-    brief: 'طبيب بيطري',
-    profession: 'طبيب بيطري',
-    videoId: '1znPaRCTlm9_LAQ4neg0LCBOC6JakksGc',
-    image: 'https://lh3.googleusercontent.com/d/1znPaRCTlm9_LAQ4neg0LCBOC6JakksGc=w600',
-    before: 'محتوى غير منظم وصعوبة في جذب عملاء للاستشارات الشخصية.',
-    after: 'حضور قوي واحترافي، زيادة الوعي بالخدمة، وجدول حجوزات كامل.',
-    metrics: [{
-      icon: <Users size={16} />,
-      text: '+30K Followers'
-    }, {
-      icon: <TrendingUp size={16} />,
-      text: 'جدول حجوزات كامل'
-    }]
-  }, {
-    name: 'أ. أحمد رأفت',
-    brief: 'مستشار عقاري',
-    profession: 'مستشار عقاري',
-    videoId: '1DT0nvzMbEFsMZf4BXGEx8hQri38m9gEU',
-    image: 'https://lh3.googleusercontent.com/d/1DT0nvzMbEFsMZf4BXGEx8hQri38m9gEU=w600',
-    before: 'صعوبة في الوصول للمستثمرين المهتمين، ومحتوى تقليدي مش بيبني ثقة.',
-    after: 'محتوى استثماري مبسط وقوي، بناء اسم موثوق في السوق، وتدفق مستمر للعملاء المهتمين.',
-    metrics: [{
-      icon: <TrendingUp size={16} />,
-      text: 'زيادة كبيرة في المبيعات'
-    }, {
-      icon: <Users size={16} />,
-      text: 'عملاء مستهدفين يومياً'
-    }]
-  }];
+  
+  const rawStories = t('success_stories.stories', { returnObjects: true }) as Array<any> || [];
+  
+  const stories = rawStories.map(story => ({
+    ...story,
+    metrics: (story.metrics || []).map((metric: any) => ({
+      icon: getIcon(metric.iconName),
+      text: metric.text
+    }))
+  }));
   return <section id="results" className="py-24 bg-go-warm">
     <div className="container mx-auto px-4 md:px-8">
       <div className="text-center max-w-3xl mx-auto mb-16">
@@ -106,8 +37,8 @@ export const SuccessStories = () => {
         }} viewport={{
           once: true
         }} className="text-3xl md:text-4xl font-black mb-6">
-          ناس بدأت مع GO ADS…{' '}
-          <span className="text-go-orange">وبدأت تظهر بشكل مختلف</span>
+          {t('success_stories.title1')}{' '}
+          <span className="text-go-orange">{t('success_stories.title2')}</span>
         </motion.h2>
         <motion.p initial={{
           opacity: 0,
@@ -120,8 +51,7 @@ export const SuccessStories = () => {
         }} transition={{
           delay: 0.1
         }} className="text-lg text-gray-600 font-medium leading-relaxed">
-          اشتغلنا مع أصحاب خدمات وبيزنس في مجالات مختلفة، والنتيجة كانت نمو في
-          الظهور، الجمهور، الثقة، والاستفسارات.
+          {t('success_stories.desc')}
         </motion.p>
       </div>
 
@@ -167,7 +97,7 @@ export const SuccessStories = () => {
             <div className="space-y-4 mb-6">
               <div>
                 <span className="text-xs font-bold text-gray-400 block mb-1">
-                  قبل GO ADS:
+                  {t('success_stories.before')}
                 </span>
                 <p className="text-sm text-gray-600 font-medium">
                   {story.before}
@@ -175,7 +105,7 @@ export const SuccessStories = () => {
               </div>
               <div>
                 <span className="text-xs font-bold text-go-orange block mb-1">
-                  بعد GO ADS:
+                  {t('success_stories.after')}
                 </span>
                 <p className="text-sm text-gray-800 font-bold">
                   {story.after}
@@ -186,7 +116,7 @@ export const SuccessStories = () => {
             {/* Metrics */}
             <div className="pt-4 border-t border-gray-100 space-y-2">
               <span className="text-xs font-bold text-gray-400 block mb-2">
-                النتائج:
+                {t('success_stories.results_label')}
               </span>
               {story.metrics.map((metric, i) => <div key={i} className="flex items-center gap-2 text-sm font-bold text-gray-700 bg-gray-50 p-2 rounded-lg">
                 <div className="text-go-orange">{metric.icon}</div>

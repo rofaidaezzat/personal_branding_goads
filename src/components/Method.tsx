@@ -2,37 +2,39 @@ import React, { useState, cloneElement } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Target, Camera, Video, LineChart, UserCheck } from 'lucide-react';
 import cameraStepImg from '../assets/go ads 7 (1).png';
+import { useTranslation } from 'react-i18next';
 export const Method = () => {
+  const { t } = useTranslation();
   const [activeStep, setActiveStep] = useState(0);
   const steps = [{
     icon: <UserCheck />,
-    title: 'بنفهمك',
-    desc: 'بنبني أساس قوي من خلال فهم شخصيتك، خدمتك، وأهدافك.',
+    title: t('method.steps.step1_title'),
+    desc: t('method.steps.step1_desc'),
     image: 'https://lh3.googleusercontent.com/d/1i0YOsPiCVvJTpX5dEZutPL9qq41lM-SW'
   }, {
     icon: <Search />,
-    title: 'بنحلل وضعك والمنافسين',
-    desc: 'بندرس السوق ونشوف المنافسين بيعملوا إيه عشان نلاقي نقطة تميزك.',
+    title: t('method.steps.step2_title'),
+    desc: t('method.steps.step2_desc'),
     image: 'https://lh3.googleusercontent.com/d/10EJd0mX60GZEoNKTUaBIprK41CVGSQLW'
   }, {
     icon: <Target />,
-    title: 'بنبني استراتيجية براند شخصية',
-    desc: 'بنحدد الـ Content Pillars وطريقة الظهور اللي هتبني ثقة مع جمهورك.',
+    title: t('method.steps.step3_title'),
+    desc: t('method.steps.step3_desc'),
     image: 'https://lh3.googleusercontent.com/d/1BuQ7luEfPxNBd3EDN07mN1keyrdSx0PL'
   }, {
     icon: <Camera />,
-    title: 'بنجهز التصوير والمحتوى',
-    desc: 'جلسات تصوير احترافية وكتابة محتوى بيعكس خبرتك بجد.',
+    title: t('method.steps.step4_title'),
+    desc: t('method.steps.step4_desc'),
     image: cameraStepImg
   }, {
     icon: <Video />,
-    title: 'بنطلع ريلز وتصميمات',
-    desc: 'إنتاج عالي الجودة بيخليك تظهر بشكل بريميوم ومختلف.',
+    title: t('method.steps.step5_title'),
+    desc: t('method.steps.step5_desc'),
     image: 'https://lh3.googleusercontent.com/d/16hX0AE6Mq8fpRUxggdOyjnyTDs_oq1Xt'
   }, {
     icon: <LineChart />,
-    title: 'بنراجع النمو ونطور',
-    desc: 'متابعة مستمرة للأرقام عشان نحسن الاستراتيجية ونزود النتائج.',
+    title: t('method.steps.step6_title'),
+    desc: t('method.steps.step6_desc'),
     image: 'https://lh3.googleusercontent.com/d/1lffLPokOkPdVQ0PZTj_8QL1LCxVbSa5M'
   }];
   return <section id="story" className="py-24 bg-go-warm">
@@ -47,7 +49,7 @@ export const Method = () => {
         }} viewport={{
           once: true
         }} className="text-3xl md:text-4xl font-black mb-6">
-          إزاي GO ADS بتحوّل خبرتك لبراند؟
+          {t('method.title')}
         </motion.h2>
         <motion.p initial={{
           opacity: 0,
@@ -60,10 +62,7 @@ export const Method = () => {
         }} transition={{
           delay: 0.1
         }} className="text-lg text-gray-600 font-medium leading-relaxed">
-          إحنا بنبدأ من قبل التصوير والتصميم. بنبدأ من فهمك: أنت مين، بتقدم
-          إيه، جمهورك محتاج يسمع إيه، والمنافسين بيظهروا إزاي. بعدها بنبني
-          طريقة ظهورك، ونحوّلها لمحتوى، صور، ريلز، وتصميمات تساعد الناس تشوف
-          قيمتك وتثق فيك.
+          {t('method.desc')}
         </motion.p>
       </div>
 
@@ -132,7 +131,7 @@ export const Method = () => {
               delay: 0.2
             }}>
               <p className="text-sm font-bold text-go-orange mb-2">
-                الخطوة {activeStep + 1}
+                {t('method.label_step')} {activeStep + 1}
               </p>
               <h3 className="text-2xl font-black">
                 {steps[activeStep].title}

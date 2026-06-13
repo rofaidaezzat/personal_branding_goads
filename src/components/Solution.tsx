@@ -1,38 +1,40 @@
 import React, { cloneElement, Fragment } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Target, Camera, Video, Layout, LineChart, BookOpen, Shield } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 export const Solution = () => {
+  const { t } = useTranslation();
   const features = [{
     icon: <Search />,
-    text: 'تحليل SWOT ليك',
+    text: t('solution.features.swot'),
     angle: 0
   }, {
     icon: <Shield />,
-    text: 'تحليل المنافسين',
+    text: t('solution.features.competitors'),
     angle: 45
   }, {
     icon: <Target />,
-    text: 'استراتيجية براند شخصية',
+    text: t('solution.features.strategy'),
     angle: 90
   }, {
     icon: <Camera />,
-    text: 'جلسات تصوير احترافية',
+    text: t('solution.features.shooting'),
     angle: 135
   }, {
     icon: <Video />,
-    text: '4 ريلز شهريًا',
+    text: t('solution.features.reels'),
     angle: 180
   }, {
     icon: <Layout />,
-    text: '10 تصميمات شهريًا',
+    text: t('solution.features.designs'),
     angle: 225
   }, {
     icon: <LineChart />,
-    text: 'أفكار محتوى مناسبة',
+    text: t('solution.features.content'),
     angle: 270
   }, {
     icon: <BookOpen />,
-    text: 'تعليمك فلسفة البراند',
+    text: t('solution.features.philosophy'),
     angle: 315
   }];
   return <section className="py-24 bg-go-black text-white overflow-hidden relative">
@@ -50,9 +52,9 @@ export const Solution = () => {
         }} viewport={{
           once: true
         }} className="text-3xl md:text-4xl font-black mb-6">
-            GO ADS بتبني لك{' '}
-            <span className="text-go-orange">نظام براند شخصي كامل</span> — مش
-            مجرد بوستات
+            {t('solution.title1')}{' '}
+            <span className="text-go-orange">{t('solution.title2')}</span>{' '}
+            {t('solution.title3')}
           </motion.h2>
           <motion.p initial={{
           opacity: 0,
@@ -65,9 +67,7 @@ export const Solution = () => {
         }} transition={{
           delay: 0.1
         }} className="text-lg text-gray-400 font-medium leading-relaxed">
-            إحنا مش بنعمل تصميمات وخلاص. بنبدأ بفهمك، فهم خدمتك، تحليل وضعك،
-            وتحليل المنافسين، وبعدها بنبني استراتيجية محتوى وشكل ظهور يساعدك
-            تكبر بثبات.
+            {t('solution.desc')}
           </motion.p>
         </div>
 

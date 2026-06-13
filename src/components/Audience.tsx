@@ -1,53 +1,55 @@
 import React, { cloneElement, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Stethoscope, Scale, Lightbulb, Play, X, Coins, Home } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export const Audience = () => {
+  const { t } = useTranslation();
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
 
   const driveThumbnail = (id: string) => `https://lh3.googleusercontent.com/d/${id}=w800`;
 
   const audiences = [{
-    title: 'الدكاترة والعيادات',
+    title: t('audience.cards.doctors.title'),
     icon: <Stethoscope />,
-    desc: 'لو أنت دكتور أو عندك عيادة، البراند الشخصي بيساعد المرضى يعرفوك، يفهموا خبرتك، ويثقوا فيك قبل ما يحجزوا.',
-    examples: 'دكاترة جلدية، أسنان، تغذية، تجميل، علاج طبيعي، عيادات متخصصة.',
+    desc: t('audience.cards.doctors.desc'),
+    examples: t('audience.cards.doctors.examples'),
     image: driveThumbnail('1_XTMDuqJ1NqVsZ-qlgSILm2VAt0U3qqu'),
     fallbackImage: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     videoId: '1_XTMDuqJ1NqVsZ-qlgSILm2VAt0U3qqu'
   }, {
-    title: 'المحامين والمستشارين',
+    title: t('audience.cards.lawyers.title'),
     icon: <Scale />,
-    desc: 'لو أنت محامي، محتواك وطريقة ظهورك ممكن يخلّوا العميل يحس إنك فاهم مشكلته قبل ما يتواصل معاك.',
-    examples: 'محامين شركات، قضايا أسرية، عقارات، تأسيس شركات، استشارات قانونية.',
+    desc: t('audience.cards.lawyers.desc'),
+    examples: t('audience.cards.lawyers.examples'),
     image: driveThumbnail('1Hgb_SnzJWU1DIpyjmM9mI8nJmwe1OWPj'),
     videoId: '1Hgb_SnzJWU1DIpyjmM9mI8nJmwe1OWPj'
   }, {
-    title: 'الكوتشز والمدربين',
+    title: t('audience.cards.coaches.title'),
     icon: <Lightbulb />,
-    desc: 'لو بتبيع معرفة أو استشارات، الناس لازم تشوف طريقة تفكيرك وتقتنع بيك قبل ما تشتري منك.',
-    examples: 'Business coaches، career coaches، life coaches، fitness coaches.',
+    desc: t('audience.cards.coaches.desc'),
+    examples: t('audience.cards.coaches.examples'),
     image: driveThumbnail('1XBj-YHRyexSb-h1pdCUY0LxToGmGodlj'),
     videoId: '1XBj-YHRyexSb-h1pdCUY0LxToGmGodlj'
   }, {
-    title: 'المستشارين الماليين',
+    title: t('audience.cards.finance.title'),
     icon: <Coins />,
-    desc: 'لو أنت مستشار مالي أو شغال في مجال التمويل والاستثمار، البراند الشخصي بيساعدك تبني مصداقية وثقة عالية مع العملاء.',
-    examples: 'مستشارين ماليين، خبراء تمويل، مخططين ماليين، مستشاري استثمار، محاسبين قانونيين.',
+    desc: t('audience.cards.finance.desc'),
+    examples: t('audience.cards.finance.examples'),
     image: driveThumbnail('1V7m0_4oioehZ4YK6pJL7e01Z5eQQQRqh'),
     videoId: '1V7m0_4oioehZ4YK6pJL7e01Z5eQQQRqh'
   }, {
-    title: 'المستشارين العقاريين',
+    title: t('audience.cards.real_estate.title'),
     icon: <Home />,
-    desc: 'لو أنت شغال في العقارات أو التسويق العقاري، البراند الشخصي بيساعدك تبني اسم قوي وتجذب مستثمرين وملاك يثقوا فيك.',
-    examples: 'مسوقين عقاريين، مستشاري عقارات، مطورين عقاريين، أصحاب شركات تسويق عقاري.',
+    desc: t('audience.cards.real_estate.desc'),
+    examples: t('audience.cards.real_estate.examples'),
     image: driveThumbnail('1GSjej0Z9kcV0kQSNE6ts4WgKiSxcfMU4'),
     videoId: '1GSjej0Z9kcV0kQSNE6ts4WgKiSxcfMU4'
   }, {
-    title: 'أي شخص عايز يبقى معروف',
+    title: t('audience.cards.anyone.title'),
     icon: <div />,
-    desc: 'لو هدفك إن الناس تفتكرك لما يحتاجوا خدمتك، يبقى أنت محتاج براند شخصي واضح ومبني صح.',
-    examples: 'أي مجال بيعتمد على الثقة والخبرة الشخصية.',
+    desc: t('audience.cards.anyone.desc'),
+    examples: t('audience.cards.anyone.examples'),
     image: driveThumbnail('1Iq4YojbQe5VDHruevj4cxbhkv94pXXIz'),
     videoId: '1Iq4YojbQe5VDHruevj4cxbhkv94pXXIz'
   }];
@@ -64,7 +66,7 @@ export const Audience = () => {
         }} viewport={{
           once: true
         }} className="text-3xl md:text-4xl font-black mb-6">
-          مين يقدر يستفيد من خدمة البراند الشخصي؟
+          {t('audience.title')}
         </motion.h2>
         <motion.p initial={{
           opacity: 0,
@@ -77,8 +79,7 @@ export const Audience = () => {
         }} transition={{
           delay: 0.1
         }} className="text-lg text-gray-600 font-medium leading-relaxed">
-          لو عندك خبرة، خدمة، أو بيزنس وعايز الناس تشوفك بشكل أوضح وتثق فيك
-          أسرع، الخدمة دي معمولة ليك.
+          {t('audience.desc')}
         </motion.p>
       </div>
 
@@ -141,7 +142,7 @@ export const Audience = () => {
                 </p>
                 <div className="bg-gray-50 p-3 rounded-xl">
                   <span className="text-xs font-bold text-gray-400 block mb-1">
-                    أمثلة:
+                    {t('audience.examples_label')}
                   </span>
                   <p className="text-sm text-gray-700 font-bold">
                     {item.examples}
@@ -163,8 +164,7 @@ export const Audience = () => {
         once: true
       }} className="mt-16 text-center">
         <div className="inline-block bg-go-orangeLight text-go-orange px-8 py-4 rounded-2xl font-black text-xl">
-          ببساطة: لو الناس لازم تثق فيك قبل ما تشتري منك، فالبراند الشخصي مهم
-          ليك.
+          {t('audience.summary')}
         </div>
       </motion.div>
     </div>

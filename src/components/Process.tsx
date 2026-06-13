@@ -1,31 +1,33 @@
 import React, { cloneElement } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Search, Target, Video, Layout, LineChart } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 export const Process = () => {
+  const { t } = useTranslation();
   const steps = [{
     icon: <Calendar />,
-    title: 'Free Meeting',
-    desc: 'نفهم هدفك، خدمتك، جمهورك، وتحدياتك.'
+    title: t('process.steps.meeting.title'),
+    desc: t('process.steps.meeting.desc')
   }, {
     icon: <Search />,
-    title: 'Analysis',
-    desc: 'نعمل SWOT analysis ليك وتحليل للمنافسين.'
+    title: t('process.steps.analysis.title'),
+    desc: t('process.steps.analysis.desc')
   }, {
     icon: <Target />,
-    title: 'Strategy',
-    desc: 'نبني positioning، content pillars، وطريقة ظهور مناسبة.'
+    title: t('process.steps.strategy.title'),
+    desc: t('process.steps.strategy.desc')
   }, {
     icon: <Video />,
-    title: 'Production',
-    desc: 'نجهز التصوير، الريلز، والتصميمات.'
+    title: t('process.steps.production.title'),
+    desc: t('process.steps.production.desc')
   }, {
     icon: <Layout />,
-    title: 'Publishing Direction',
-    desc: 'نرتب المحتوى بطريقة تخدم أهدافك.'
+    title: t('process.steps.publishing.title'),
+    desc: t('process.steps.publishing.desc')
   }, {
     icon: <LineChart />,
-    title: 'Growth Review',
-    desc: 'نراجع النتائج ونحدد فرص النمو القادمة.'
+    title: t('process.steps.growth.title'),
+    desc: t('process.steps.growth.desc')
   }];
   return <section className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 md:px-8">
@@ -39,7 +41,7 @@ export const Process = () => {
         }} viewport={{
           once: true
         }} className="text-3xl md:text-4xl font-black mb-6">
-            رحلتك معانا خطوة بخطوة
+            {t('process.title')}
           </motion.h2>
         </div>
 

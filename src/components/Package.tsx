@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { Check, Gift, Camera, Video, Layout, Target, Search } from 'lucide-react';
 import { Button } from './Shared';
+import { useTranslation } from 'react-i18next';
 export const Package = () => {
+  const { t, i18n } = useTranslation();
+  console.log("DEBUG Package language:", i18n.language, "title:", t('package.title'));
   const handleScrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
@@ -10,33 +13,39 @@ export const Package = () => {
   };
   const features = [{
     icon: <Search size={18} />,
-    text: 'SWOT Analysis ليك ولبراندك'
+    text: t('package.features.swot')
   }, {
     icon: <Target size={18} />,
-    text: 'تحليل المنافسين'
+    text: t('package.features.competitors')
   }, {
     icon: <Target size={18} />,
-    text: 'استراتيجية براند شخصية مخصصة'
+    text: t('package.features.strategy')
   }, {
     icon: <Camera size={18} />,
-    text: 'جلسة تصوير احترافية'
+    text: t('package.features.shooting')
   }, {
     icon: <Video size={18} />,
-    text: '4 Reels في الشهر'
+    text: t('package.features.reels')
   }, {
     icon: <Layout size={18} />,
-    text: '10 Social Media Designs في الشهر'
+    text: t('package.features.designs')
   }, {
     icon: <Check size={18} />,
-    text: 'أفكار محتوى مناسبة لشخصيتك وخدمتك'
+    text: t('package.features.content')
   }, {
     icon: <Check size={18} />,
-    text: 'توجيه واضح لطريقة ظهورك'
+    text: t('package.features.direction')
   }, {
     icon: <Check size={18} />,
-    text: 'متابعة وتحسين على حسب النتائج'
+    text: t('package.features.optimize')
   }];
-  const bonuses = ['بنعلّمك فلسفة البراند الشخصي المناسبة ليك', 'بنشرح لك إزاي تكمل رحلتك حتى لو مجددتش', 'Content pillars مخصصة ليك', 'Direction واضح لشكل ظهورك', 'توصيات تساعدك تعمل Scale بعد كده'];
+  const bonuses = [
+    t('package.bonus.item1'),
+    t('package.bonus.item2'),
+    t('package.bonus.item3'),
+    t('package.bonus.item4'),
+    t('package.bonus.item5')
+  ];
   return <section id="package" className="py-24 bg-white">
       <div className="container mx-auto px-4 md:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -49,7 +58,7 @@ export const Package = () => {
         }} viewport={{
           once: true
         }} className="text-3xl md:text-4xl font-black mb-6">
-            باكدج كاملة تبني براندك الشخصي من أول شهر
+            {t('package.title')}
           </motion.h2>
           <motion.p initial={{
           opacity: 0,
@@ -62,8 +71,7 @@ export const Package = () => {
         }} transition={{
           delay: 0.1
         }} className="text-lg text-gray-600 font-medium leading-relaxed">
-            كل اللي محتاجه عشان تبدأ تظهر بشكل احترافي ومبني على استراتيجية، مش
-            مجرد محتوى بيتنشر وخلاص.
+            {t('package.desc')}
           </motion.p>
         </div>
 
@@ -85,10 +93,10 @@ export const Package = () => {
                 </div>
                 <div>
                   <h3 className="text-2xl font-black text-go-black">
-                    Personal Branding Growth Bundle
+                    {t('package.bundle_title')}
                   </h3>
                   <p className="text-gray-500 font-bold text-sm">
-                    نظام متكامل لنمو براندك
+                    {t('package.bundle_subtitle')}
                   </p>
                 </div>
               </div>
@@ -122,9 +130,9 @@ export const Package = () => {
                   </div>
                   <div>
                     <p className="text-xs text-gray-400 font-bold">
-                      إنتاج شهري
+                      {t('package.mockups.reels')}
                     </p>
-                    <p className="text-sm font-black text-go-black">4 Reels</p>
+                    <p className="text-sm font-black text-go-black">{t('package.mockups.reels_val')}</p>
                   </div>
                 </div>
                 <div className="w-px bg-gray-200" />
@@ -133,9 +141,9 @@ export const Package = () => {
                     <Layout size={20} />
                   </div>
                   <div>
-                    <p className="text-xs text-gray-400 font-bold">تصميمات</p>
+                    <p className="text-xs text-gray-400 font-bold">{t('package.mockups.designs')}</p>
                     <p className="text-sm font-black text-go-black">
-                      10 Designs
+                      {t('package.mockups.designs_val')}
                     </p>
                   </div>
                 </div>
@@ -159,7 +167,7 @@ export const Package = () => {
                   <div className="absolute top-0 right-0 w-16 h-16 bg-go-orange/10 rounded-bl-full -z-10" />
                   <div className="flex items-center gap-2 text-go-orange font-black mb-4">
                     <Gift size={20} />
-                    <span>ومجانًا مع الباكدج:</span>
+                    <span>{t('package.bonus.title')}</span>
                   </div>
                   <ul className="space-y-3">
                     {bonuses.map((bonus, index) => <li key={index} className="flex items-start gap-2 text-sm text-gray-700 font-bold">
@@ -171,22 +179,22 @@ export const Package = () => {
 
                 <div className="mb-8">
                   <p className="text-gray-400 font-bold text-sm mb-1 line-through decoration-red-400 decoration-2">
-                    بدل 12000 جنيه
+                    {t('package.pricing.original')}
                   </p>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-gray-500 font-bold">تبدأ من</span>
+                    <span className="text-gray-500 font-bold">{t('package.pricing.label')}</span>
                     <span className="text-5xl font-black text-go-black">
                       6000
                     </span>
                     <span className="text-xl font-bold text-gray-500">
-                      جنيه
+                      {t('package.pricing.currency')}
                     </span>
                   </div>
                 </div>
               </div>
 
               <Button onClick={handleScrollToContact} className="w-full py-4 text-lg shadow-lg shadow-go-orange/20">
-                احجز اجتماع مجاني
+                {t('package.cta')}
               </Button>
             </div>
           </motion.div>

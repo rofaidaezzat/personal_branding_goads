@@ -1,22 +1,24 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Star, TrendingUp, Users, PlayCircle, Award } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 export const SocialProof = () => {
+  const { t } = useTranslation();
   const items = [{
     icon: <Award size={20} />,
-    text: '6 قصص نجاح'
+    text: t('social_proof.success_stories')
   }, {
     icon: <Users size={20} />,
-    text: 'نمو في الجمهور'
+    text: t('social_proof.audience_growth')
   }, {
     icon: <TrendingUp size={20} />,
-    text: 'نمو في الإيرادات'
+    text: t('social_proof.revenue_growth')
   }, {
     icon: <PlayCircle size={20} />,
-    text: 'ريلز حققت انتشار'
+    text: t('social_proof.reels_viral')
   }, {
     icon: <Star size={20} />,
-    text: 'فيديوهات وتجارب عملاء'
+    text: t('social_proof.testimonials')
   }];
   return <section className="border-y border-gray-100 bg-white py-6 overflow-hidden">
       <div className="container mx-auto px-4 md:px-8">

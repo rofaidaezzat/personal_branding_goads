@@ -1,22 +1,24 @@
 import React, { cloneElement } from 'react';
 import { motion } from 'framer-motion';
 import { Eye, ShieldCheck, Users, MessageCircle, DollarSign, BarChart3 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 export const Revenue = () => {
+  const { t } = useTranslation();
   const chain = [{
     icon: <Eye />,
-    label: 'ظهور أقوى'
+    label: t('revenue.chain.step1')
   }, {
     icon: <ShieldCheck />,
-    label: 'ثقة أعلى'
+    label: t('revenue.chain.step2')
   }, {
     icon: <Users />,
-    label: 'جمهور مناسب'
+    label: t('revenue.chain.step3')
   }, {
     icon: <MessageCircle />,
-    label: 'استفسارات أكتر'
+    label: t('revenue.chain.step4')
   }, {
     icon: <DollarSign />,
-    label: 'إيرادات أعلى',
+    label: t('revenue.chain.step5'),
     highlight: true
   }];
   return <section className="py-24 bg-white overflow-hidden">
@@ -31,9 +33,9 @@ export const Revenue = () => {
         }} viewport={{
           once: true
         }} className="text-3xl md:text-4xl font-black mb-6">
-            البراند الشخصي مش شهرة… <br className="hidden md:block" />
+            {t('revenue.title')} <br className="hidden md:block" />
             <span className="text-go-orange">
-              البراند الشخصي ثقة بتتحول لفلوس
+              {t('revenue.subtitle')}
             </span>
           </motion.h2>
           <motion.p initial={{
@@ -47,10 +49,7 @@ export const Revenue = () => {
         }} transition={{
           delay: 0.1
         }} className="text-lg text-gray-600 font-medium leading-relaxed mb-6">
-            قبل ما العميل يشتري، هو بيقارن. قبل ما يحجز، هو بيدور. وقبل ما يثق،
-            هو بيشوف محتواك، شكلك، كلامك، وتجارب الناس معاك. لما ظهورك يبقى واضح
-            ومتكرر ومبني على استراتيجية، الناس بتبدأ تفهم قيمتك أسرع. وده بيزوّد
-            فرص الاستفسارات، الحجوزات، والمبيعات.
+            {t('revenue.desc')}
           </motion.p>
           <motion.p initial={{
           opacity: 0,
@@ -63,8 +62,7 @@ export const Revenue = () => {
         }} transition={{
           delay: 0.2
         }} className="text-xl font-black text-go-black">
-            إحنا بنحوّل وجودك على السوشيال ميديا من بوستات عشوائية لنظام بيبني
-            ثقة وبيفتح فرص بيع.
+            {t('revenue.summary')}
           </motion.p>
 
           <motion.div
@@ -80,7 +78,7 @@ export const Revenue = () => {
               <div className="bg-gray-50 border-b border-gray-100 px-6 py-4 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-go-orange animate-ping" />
-                  <span className="font-bold text-gray-700 text-sm">فرصة السوق والنمو 📈</span>
+                  <span className="font-bold text-gray-700 text-sm">{t('revenue.chart.title')}</span>
                 </div>
                 <span className="text-xs text-gray-400 font-bold">Source: eMarketer 2025</span>
               </div>
@@ -89,11 +87,11 @@ export const Revenue = () => {
                 {/* Stat 1: Creator Economy Growth */}
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-bold text-gray-600">اقتصاد صناع المحتوى</span>
+                    <span className="text-sm font-bold text-gray-600">{t('revenue.chart.creator_economy')}</span>
                     <div className="flex items-center gap-2">
                       <span className="text-xs font-bold text-gray-400 line-through">$250B</span>
                       <span className="text-sm font-black text-go-orange">$480B</span>
-                      <span className="text-xs bg-green-50 text-green-600 font-bold px-2 py-0.5 rounded-full">+92% بحلول 2027</span>
+                      <span className="text-xs bg-green-50 text-green-600 font-bold px-2 py-0.5 rounded-full">{t('revenue.chart.target_2027')}</span>
                     </div>
                   </div>
                   <div className="h-5 bg-gray-100 rounded-full overflow-hidden">
@@ -114,15 +112,15 @@ export const Revenue = () => {
                     </motion.div>
                   </div>
                   <div className="flex justify-between mt-1">
-                    <span className="text-xs text-gray-400">الآن</span>
-                    <span className="text-xs text-go-orange font-bold">2027</span>
+                    <span className="text-xs text-gray-400">{t('revenue.chart.now')}</span>
+                    <span className="text-xs text-go-orange font-bold">{t('revenue.chart.future')}</span>
                   </div>
                 </div>
 
                 {/* Stat 2: US Creator Spend */}
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-bold text-gray-600">إنفاق الشركات على محتوى الكرياتورز (أمريكا 2025)</span>
+                    <span className="text-sm font-bold text-gray-600">{t('revenue.chart.corporate_spend')}</span>
                     <span className="text-sm font-black text-go-black">$37B</span>
                   </div>
                   <div className="h-5 bg-gray-100 rounded-full overflow-hidden">
@@ -139,7 +137,7 @@ export const Revenue = () => {
                 {/* Stat 3: Micro/Nano Influencer Share */}
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-bold text-gray-600">حصة Micro &amp; Nano Influencers من ميزانيات التسويق</span>
+                    <span className="text-sm font-bold text-gray-600">{t('revenue.chart.micro_share')}</span>
                     <span className="text-sm font-black text-go-orange">45.5%</span>
                   </div>
                   <div className="h-5 bg-gray-100 rounded-full overflow-hidden">
@@ -152,7 +150,7 @@ export const Revenue = () => {
                     />
                   </div>
                   <p className="mt-2 text-xs text-gray-500 font-medium text-right">
-                    أصحاب الجمهور الصغير بس الواثق فيهم — ده أنت!
+                    {t('revenue.chart.micro_sub')}
                   </p>
                 </div>
               </div>
@@ -231,19 +229,19 @@ export const Revenue = () => {
             {/* Right stats panel */}
             <div className="space-y-6 order-last md:order-first">
               <div>
-                <p className="text-xs font-bold text-gray-400 mb-1">اقتصاد الكرياتورز</p>
+                <p className="text-xs font-bold text-gray-400 mb-1">{t('revenue.chart.creator_economy')}</p>
                 <div className="flex items-end gap-2">
                   <span className="text-3xl font-black text-go-black">$480B</span>
                   <span className="text-sm font-bold text-green-500 bg-green-50 px-2 py-1 rounded-md mb-1">+92%</span>
                 </div>
-                <p className="text-xs text-gray-400 font-medium">بحلول 2027</p>
+                <p className="text-xs text-gray-400 font-medium">{t('revenue.chart.target_2027')}</p>
               </div>
               <div>
                 <p className="text-xs font-bold text-gray-400 mb-1 uppercase tracking-wide">Micro &amp; Nano Influencers</p>
                 <div className="flex items-end gap-2">
                   <span className="text-3xl font-black text-go-orange">45.5%</span>
                 </div>
-                <p className="text-xs text-gray-400 font-medium">من ميزانيات التسويق</p>
+                <p className="text-xs text-gray-400 font-medium">{t('revenue.chart.micro_share')}</p>
               </div>
             </div>
 
@@ -308,10 +306,10 @@ export const Revenue = () => {
               </div>
               {/* X-axis labels */}
               <div className="absolute bottom-0 left-10 right-0 flex items-center px-4 pb-2 gap-3">
-                <span className="flex-1 text-center text-[10px] font-bold text-gray-400">الآن</span>
-                <span className="flex-1 text-center text-[10px] font-bold text-blue-400">أمريكا</span>
-                <span className="flex-[4] text-center text-[10px] font-bold text-gray-300">نمو متوقع</span>
-                <span className="flex-1 text-center text-[10px] font-bold text-go-orange">2027</span>
+                <span className="flex-1 text-center text-[10px] font-bold text-gray-400">{t('revenue.chart.now')}</span>
+                <span className="flex-1 text-center text-[10px] font-bold text-blue-400">{t('revenue.chart.us')}</span>
+                <span className="flex-[4] text-center text-[10px] font-bold text-gray-300">{t('revenue.chart.growth_trend')}</span>
+                <span className="flex-1 text-center text-[10px] font-bold text-go-orange">{t('revenue.chart.future')}</span>
               </div>
             </div>
           </div>

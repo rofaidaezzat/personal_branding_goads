@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const videos = [
   { id: '16TxvRY5SznVxN5Lw-XaoXEvl031Dh3mf' },
@@ -24,6 +25,7 @@ function driveThumbnail(id: string, width = 800) {
 }
 
 export const Testimonials = () => {
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
@@ -80,7 +82,7 @@ export const Testimonials = () => {
             viewport={{ once: true }}
             className="text-go-orange font-black text-sm mb-3"
           >
-            آراء العملاء
+            {t('testimonials.badge')}
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -89,7 +91,7 @@ export const Testimonials = () => {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-4xl lg:text-5xl font-black text-go-black leading-tight"
           >
-            اسمع منهم بنفسك 🎥
+            {t('testimonials.title')}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -98,7 +100,7 @@ export const Testimonials = () => {
             transition={{ delay: 0.2 }}
             className="text-gray-500 mt-4 text-lg"
           >
-            مش كلامنا — ده كلام عملاء حقيقيين شافوا نتايج حقيقية
+            {t('testimonials.desc')}
           </motion.p>
         </div>
 

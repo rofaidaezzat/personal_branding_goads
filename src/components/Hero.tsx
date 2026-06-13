@@ -3,7 +3,9 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from './Shared';
 import { TrendingUp, Users, Play } from 'lucide-react';
 import heroThumbnail from '../assets/hero-thumbnail.jpg';
+import { useTranslation } from 'react-i18next';
 export const Hero = () => {
+  const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
   const { scrollY } = useScroll();
   const yUp = useTransform(scrollY, [0, 500], [0, -30]);
@@ -41,9 +43,9 @@ export const Hero = () => {
               }}>
 
               <h1 className="text-5xl md:text-6xl lg:text-[70px] font-black leading-[1.2] mb-6 text-go-black">
-                مش محتاج تظهر أكتر بس… <br />
+                {t('hero.title1')} <br />
                 <span className="relative inline-block mt-2">
-                  <span className="relative z-10">محتاج تظهر صح</span>
+                  <span className="relative z-10">{t('hero.title2')}</span>
                   <motion.span
                     initial={{
                       scaleX: 0
@@ -62,14 +64,12 @@ export const Hero = () => {
               </h1>
 
               <p className="md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto text-[16px] font-[400]">
-                مع GO ADS، بنساعد أصحاب الخدمات والبيزنس يبنوا براند شخصي يخلي
-                الناس تعرفهم، تثق فيهم، وتختارهم — من خلال استراتيجية واضحة،
-                تصوير احترافي، ريلز، وتصميمات بتخدم النمو مش الشكل بس.
+                {t('hero.desc')}
               </p>
 
               <div className="flex justify-center">
                 <Button onClick={handleContactClick} className="text-lg px-8 py-4">
-                  احجز اجتماع مجاني
+                  {t('hero.cta')}
                 </Button>
               </div>
             </motion.div>
@@ -122,7 +122,7 @@ export const Hero = () => {
 
                   {/* Visual Indicator */}
                   <div className="absolute bottom-5 right-5 bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full">
-                    شاهد كيف نغير المعادلة 🎬
+                    {t('hero.video_indicator')}
                   </div>
                 </div>
               )}
@@ -154,7 +154,7 @@ export const Hero = () => {
               </div>
               <div>
                 <p className="text-sm text-gray-500 font-bold">
-                  نمو في الإيرادات
+                  {t('hero.floating_revenue')}
                 </p>
                 <p className="text-xl font-black text-go-black">3x Revenue</p>
               </div>
@@ -184,7 +184,7 @@ export const Hero = () => {
               </div>
               <div>
                 <p className="text-sm text-gray-500 font-bold">
-                  نمو في الجمهور
+                  {t('hero.floating_audience')}
                 </p>
                 <p className="text-xl font-black text-go-black">
                   +45K Followers
